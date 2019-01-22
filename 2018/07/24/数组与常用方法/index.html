@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://hx-dl.github.io">
-  <title>JS自问自答『数据类型与类型检测』 | 行无忌的成长小屋</title>
+  <title>数组与常用方法 | 行无忌的成长小屋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="秋招已经如火如荼的展开了，即将奔赴战场前，该对自己所学的知识进行一下温习和整理了，开始学习JavaScript就是从数据类型入手的，所以从数据类型开始对知识进行复习，查漏补缺。 在JavaScript中有哪些数据类型？JavaScript中的数据类型有6种： 基础数据类型5种：Boolean、String、Number、undefined、null 复杂数据类型1种：Object 如果在ES6中，">
-<meta name="keywords" content="JavaScript">
+  <meta name="description" content="数组都有哪些方法？数组的方法非常多, 可以前往MDN查看具体内容  MDN引路大法Array 数组的方法中，有哪些是对原数组有影响的？其实也就是会使原数组发生改变的方法，也称为变异方法常用的变异方法:push pop shift unshift有几个不容易被想到: reverse sort splice除了以上7种方法，其他的方法都对原数组没有影响，要么返回新数组，要么返回布尔类型或者数值等 如何">
+<meta name="keywords" content="JavaScript基础">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS自问自答『数据类型与类型检测』">
-<meta property="og:url" content="https://hx-dl.github.io/2018/07/22/JS自问自答『数据类型与类型检测』/index.html">
+<meta property="og:title" content="数组与常用方法">
+<meta property="og:url" content="https://hx-dl.github.io/2018/07/24/数组与常用方法/index.html">
 <meta property="og:site_name" content="行无忌的成长小屋">
-<meta property="og:description" content="秋招已经如火如荼的展开了，即将奔赴战场前，该对自己所学的知识进行一下温习和整理了，开始学习JavaScript就是从数据类型入手的，所以从数据类型开始对知识进行复习，查漏补缺。 在JavaScript中有哪些数据类型？JavaScript中的数据类型有6种： 基础数据类型5种：Boolean、String、Number、undefined、null 复杂数据类型1种：Object 如果在ES6中，">
+<meta property="og:description" content="数组都有哪些方法？数组的方法非常多, 可以前往MDN查看具体内容  MDN引路大法Array 数组的方法中，有哪些是对原数组有影响的？其实也就是会使原数组发生改变的方法，也称为变异方法常用的变异方法:push pop shift unshift有几个不容易被想到: reverse sort splice除了以上7种方法，其他的方法都对原数组没有影响，要么返回新数组，要么返回布尔类型或者数值等 如何">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-04T08:02:08.000Z">
+<meta property="og:updated_time" content="2019-01-22T16:24:40.579Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS自问自答『数据类型与类型检测』">
-<meta name="twitter:description" content="秋招已经如火如荼的展开了，即将奔赴战场前，该对自己所学的知识进行一下温习和整理了，开始学习JavaScript就是从数据类型入手的，所以从数据类型开始对知识进行复习，查漏补缺。 在JavaScript中有哪些数据类型？JavaScript中的数据类型有6种： 基础数据类型5种：Boolean、String、Number、undefined、null 复杂数据类型1种：Object 如果在ES6中，">
+<meta name="twitter:title" content="数组与常用方法">
+<meta name="twitter:description" content="数组都有哪些方法？数组的方法非常多, 可以前往MDN查看具体内容  MDN引路大法Array 数组的方法中，有哪些是对原数组有影响的？其实也就是会使原数组发生改变的方法，也称为变异方法常用的变异方法:push pop shift unshift有几个不容易被想到: reverse sort splice除了以上7种方法，其他的方法都对原数组没有影响，要么返回新数组，要么返回布尔类型或者数值等 如何">
   
   
     <link rel="icon" href="/hx-dl.github.io/img/favicon.png">
@@ -151,20 +151,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-JS自问自答『数据类型与类型检测』" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-数组与常用方法" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      JS自问自答『数据类型与类型检测』
+      数组与常用方法
     </h1>
   
 
         
-        <a href="/hx-dl.github.io/2018/07/22/JS自问自答『数据类型与类型检测』/" class="archive-article-date">
-  	<time datetime="2018-07-22T14:25:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-22</time>
+        <a href="/hx-dl.github.io/2018/07/24/数组与常用方法/" class="archive-article-date">
+  	<time datetime="2018-07-24T12:40:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-24</time>
 </a>
         
         
@@ -176,52 +176,53 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>秋招已经如火如荼的展开了，即将奔赴战场前，该对自己所学的知识进行一下温习和整理了，开始学习JavaScript就是从数据类型入手的，所以从数据类型开始对知识进行复习，查漏补缺。</p>
-<h2 id="在JavaScript中有哪些数据类型？"><a href="#在JavaScript中有哪些数据类型？" class="headerlink" title="在JavaScript中有哪些数据类型？"></a>在JavaScript中有哪些数据类型？</h2><p>JavaScript中的数据类型有6种：</p>
-<p>基础数据类型5种：<code>Boolean</code>、<code>String</code>、<code>Number</code>、<code>undefined</code>、<code>null</code></p>
-<p>复杂数据类型1种：<code>Object</code></p>
-<p>如果在ES6中，新增了一种<code>symbol</code>类型，表示独一无二的值。并且<code>symbol</code>类型在初始化的时候不需要使用<code>new</code>操作符。<br><a id="more"></a></p>
-<h2 id="如何对数据类型进行判断？"><a href="#如何对数据类型进行判断？" class="headerlink" title="如何对数据类型进行判断？"></a>如何对数据类型进行判断？</h2><pre><code>typeof (true);                //&quot;boolean&quot;
-typeof (&quot;xwj&quot;);               //&quot;string&quot;
-typeof (10);                  //&quot;number&quot;
-typeof (undefined);           //&quot;undefined&quot;
-typeof (null);                //&quot;object&quot;
-typeof ({});                  //&quot;object&quot;
-</code></pre><p>对于普通的数据类型来说，只需要使用typeof来进行判断就可以来，数据类型有6种，typeofde返回的值也有6种(<strong>在es6中是7种，包括symbol类型的返回值</strong>)，但是在typeof的返回值里面，null和Object返回的都是Object，而其余的都是对应的字符串，包括function</p>
-<pre><code>function a () {}
-typeof a;                   //&quot;function&quot;
-</code></pre><h2 id="typeof后面经常会跟一个（），这对括号可否省略？"><a href="#typeof后面经常会跟一个（），这对括号可否省略？" class="headerlink" title="typeof后面经常会跟一个（），这对括号可否省略？"></a>typeof后面经常会跟一个（），这对括号可否省略？</h2><p>先想想<code>typeof</code>到底是什么？它的后面经常跟一对（），看起来确实有点像一个函数，但其实不然，typeof它是一个一元运算符，和<code>+ - * /</code> 是一样的，所以typeof后面是可以不跟（）的，加（）只是为了看起来方便，不过这也造成了一些误解，但它就是一个一元运算符。</p>
-<p>一元运算符有很高的优先级，即使我们做多个 <strong>&amp;&amp;</strong>   <strong>||</strong> 的逻辑判断时，typeof依然可以连着写，而不需要使用（）把每一个typeof包裹起来</p>
-<pre><code>typeof a === &apos;number&apos; &amp;&amp; typeof b ===&apos;string&apos;;
-</code></pre><h2 id="那么如何对Object类型进行判断？"><a href="#那么如何对Object类型进行判断？" class="headerlink" title="那么如何对Object类型进行判断？"></a>那么如何对Object类型进行判断？</h2><p>其实对Object判断主要是区分某个对象是否为数组，有以下方法：</p>
-<p><strong>1.使用instanceof判断</strong></p>
-<pre><code>console.log(a instanceof Array);    //true
-</code></pre><p><strong>2.使用原型链上的constructor判断</strong></p>
-<pre><code>console.log(a.__proto__.constructor===Array);   //true
-</code></pre><p>这两种方法，看上去不错，但是实际上还是有些漏洞的，当我们的页面中存在多个frame，并且我们的判断是在两个iframe之间的时候，就很有可能出现问题了。由于每个iframe都属于自己的window对象，跨frame实例化的对象彼此是不共享原型链的，因此导致上述检测代码失效</p>
-<pre><code>var iframe = document.createElement(&apos;iframe&apos;);          //创建iframe
-document.body.appendChild(iframe);                      //添加到body中
-xArray = window.frames[window.frames.length-1].Array;   //将xArray指向第二个iframe的引用
-var arr = new xArray(1,2,3);                            // 声明数组[1,2,3]
-alert(arr instanceof Array);                            // false
-alert(arr.constructor === Array);                       // false 
-</code></pre><p>还有两种更值得推荐的方法：</p>
-<p><strong>3.使用Array.isArray() 方法判断</strong></p>
-<pre><code>var a = [];
-console.log(Array.isArray(a));   //true
-</code></pre><p>ECMAScript 5加入了 <strong>Array.isArray()</strong> 方法，可以准确地检测一个值是否为数组。但是它有个缺点就是不支持IE8之前的版本，不过现在连淘宝都放弃了对IE8以下浏览器的兼容，这个问题大概可以忽略</p>
-<p><strong>4.使用Object.prototype.toString.call()方法判断</strong></p>
-<p>这是一种无懈可击的判断数组的方法，所有typeof返回值为”object”的对象都有一个内置属性：<code>[[Class]]</code></p>
-<p>Object.prototype.toString()获取到这个内置属性，然后根据它返回类似于”[object Array]”的字符串作为结果，利用这个方法，再配合call改变toString的this引用为待检测的对象，我们可以取得任何对象的内部属性[[Class]]</p>
-<pre><code>var a = {};
-var b = [];
-function c () {}
-console.log(Object.prototype.toString.call(a));     //[Object Object]
-console.log(Object.prototype.toString.call(b));     //[Object Array]
-console.log(Object.prototype.toString.call(c));     //[Object Function]
-</code></pre><p>Object.prototype.toString方法在ECMAScript 3中规范中就存在，也不存在兼容性问题。</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>数据类型在面试过程中，也是经常要被考察的第一个问题，但往往被我们所忽略，我以自问自答的方式记录下来，补补之前欠下的笔记。</p>
-<p>关于Object.prototype.toString()方法，这里有一篇不错的文章：[JavaScript类型检查与内部属性<a href="https://blog.csdn.net/q1056843325/article/details/53080086" target="_blank" rel="noopener">[Class]]</a></p>
+        <h2 id="数组都有哪些方法？"><a href="#数组都有哪些方法？" class="headerlink" title="数组都有哪些方法？"></a>数组都有哪些方法？</h2><p>数组的方法非常多, 可以前往MDN查看具体内容  <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank" rel="noopener">MDN引路大法Array</a></p>
+<h2 id="数组的方法中，有哪些是对原数组有影响的？"><a href="#数组的方法中，有哪些是对原数组有影响的？" class="headerlink" title="数组的方法中，有哪些是对原数组有影响的？"></a>数组的方法中，有哪些是对原数组有影响的？</h2><p>其实也就是会使原数组发生改变的方法，也称为<strong>变异方法</strong><br>常用的变异方法:push pop shift unshift<br>有几个不容易被想到: reverse sort splice<br>除了以上7种方法，其他的方法都对原数组没有影响，要么返回新数组，要么返回布尔类型或者数值等</p>
+<h2 id="如何将字符串转换为数组，数组转为字符串？"><a href="#如何将字符串转换为数组，数组转为字符串？" class="headerlink" title="如何将字符串转换为数组，数组转为字符串？"></a>如何将字符串转换为数组，数组转为字符串？</h2><p>字符串转数组：str.split(separator,limit);  参数1指定字符串或正则，参照2指定数组的最大长度</p>
+<pre><code>var str = &apos;array&apos;
+var arr = str.split(&apos;&apos;)
+console.log(arr)   //[ &apos;a&apos;, &apos;r&apos;, &apos;r&apos;, &apos;a&apos;, &apos;y&apos; ]
+</code></pre><p>数组转字符串：使用字符串的join()方法</p>
+<pre><code>var arr = [ &apos;a&apos;, &apos;r&apos;, &apos;r&apos;, &apos;a&apos;, &apos;y&apos; ]
+var newStr = arr.join(&apos;&apos;)
+console.log(newStr)  //array
+</code></pre><h2 id="一个数组如何实现去重？"><a href="#一个数组如何实现去重？" class="headerlink" title="一个数组如何实现去重？"></a>一个数组如何实现去重？</h2><p>数组去重大概可以分成四大类：<br>方法一：</p>
+<p>创建一个空数组，然后使用循环push的方式，一个一个将原数组push进去，每次push之前通过indexOf判断是否重复，如果新数组里没有，就push进去，没有就下一个</p>
+<p>方法二：</p>
+<p>直接在原数组上进行去重操作，利用splice方法，从原数组开始，依此对元素进行对比，如果发现重复项，则删除，注意删除后对数组长度进行-1</p>
+<p>方法三：</p>
+<p>使用对象属性不能相同的特点进行去重，我们可以先创建一个对象，然后把数组依此存入</p>
+<p>方法四：</p>
+<p>对原先数组进行排序，排序后进行遍历，如果相邻元素相同，则删除掉相邻元素</p>
+<h2 id="能否写一行代码进行数组去重？"><a href="#能否写一行代码进行数组去重？" class="headerlink" title="能否写一行代码进行数组去重？"></a>能否写一行代码进行数组去重？</h2><p>最短的数组去重：</p>
+<p>利用es6新特性：<br>    […new Set(arr)]</p>
+<h2 id="es5中最简单的数组去重？"><a href="#es5中最简单的数组去重？" class="headerlink" title="es5中最简单的数组去重？"></a>es5中最简单的数组去重？</h2><pre><code>[1,&apos;a&apos;,3,3,2,&apos;a&apos;,2].filter(function (item, index, arr) {
+    return index === arr.indexOf(item)
+})      //[1, &apos;a&apos;, 3, 2]
+</code></pre><h2 id="有哪些是伪数组？"><a href="#有哪些是伪数组？" class="headerlink" title="有哪些是伪数组？"></a>有哪些是伪数组？</h2><p>其实在JavaScript中，经常与伪数组打交道，最常见的三个伪数组：</p>
+<ul>
+<li>dom选择器返回的节点列表(getElementById除外)</li>
+<li>arguments对象</li>
+<li>jQuery选择器返回的对象</li>
+</ul>
+<h2 id="何如将伪数组转换为数组？"><a href="#何如将伪数组转换为数组？" class="headerlink" title="何如将伪数组转换为数组？"></a>何如将伪数组转换为数组？</h2><p>简单方法：</p>
+<p>创建一个空数组，然后将伪数组中的每一项依此压入新数组</p>
+<p>更简单一点？</p>
+<p>使用Array.prototype.slice.call(arguments)</p>
+<p>slice方法可以返回一个新的数组对象，可以对伪数组进行浅拷贝而不对其造成影响</p>
+<p>再简单一点？</p>
+<p>[].slice.call(arguments)</p>
+<p>这三种方法实现原理都是一样的，性能上无差异，只是后两种写法更加精简</p>
+<p>还有没有别的方法？</p>
+<p>使用Array.from()方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function f() &#123;</span><br><span class="line">    return Array.from(arguments);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f(1, 2, 3);</span><br><span class="line"></span><br><span class="line">// [1, 2, 3]</span><br></pre></td></tr></table></figure>
+<h2 id="访问数组元素需要注意的事"><a href="#访问数组元素需要注意的事" class="headerlink" title="访问数组元素需要注意的事"></a>访问数组元素需要注意的事</h2><p>数组的元素可以看作是数组对象的属性，但是却不能使用下列的写法来访问数组的元素，否则会抛出错误</p>
+<pre><code>console.log(arr.0); // a syntax error
+</code></pre><p>并不是 JavaScript 数组有什么特殊之处，而是因为在 JavaScript 中，以数字开头的属性不能用点号引用，必须用方括号。比如，如果一个对象有一个名为 3d 的属性，那么只能用方括号来引用它。下面是具体的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var years = [2018, 2019];</span><br><span class="line">console.log(years.0);   // 语法错误</span><br><span class="line">console.log(years[0]);  // √</span><br></pre></td></tr></table></figure>
+<p>我们可以将数组的索引用引号引起来，比如 years[2] 可以写成 years[‘2’]。 years[2] 中的 2 会被 JavaScript 解释器通过调用 toString 隐式转换成字符串。正因为这样，’2’ 和 ‘02’ 在 years 中所引用的可能是不同位置上的元素。而下面这个例子也可能会打印 true：</p>
+<pre><code>console.log(years[&apos;2&apos;] != years[&apos;02&apos;]);
+</code></pre><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>JavaScript的数组是一种类列表对象，它的原型中提供了遍历和修改元素的相关操作，在日常开发中使用频度的非常高的，重要性不必多说，在此以自问自答的方式记录下来，补补之前欠下的笔记。</p>
 
       
 
@@ -235,7 +236,7 @@ console.log(Object.prototype.toString.call(c));     //[Object Function]
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JavaScript基础</a>
         		</li>
       		
 		</ul>
@@ -291,7 +292,7 @@ console.log(Object.prototype.toString.call(c));     //[Object Function]
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://hx-dl.github.io/2018/07/22/JS自问自答『数据类型与类型检测』/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://hx-dl.github.io/2018/07/24/数组与常用方法/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -305,18 +306,18 @@ console.log(Object.prototype.toString.call(c));     //[Object Function]
   
 <nav id="article-nav">
   
-    <a href="/hx-dl.github.io/2018/07/24/JS自问自答『数组与常用方法』/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/hx-dl.github.io/2018/07/31/记菜鸡的一次的牛客网面试经历/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          JS自问自答『数组与常用方法』
+          记菜鸡的一次的牛客网面试经历
         
       </div>
     </a>
   
   
-    <a href="/hx-dl.github.io/2018/07/20/围绕React衍生出的思考/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">围绕React衍生出的思考</div>
+    <a href="/hx-dl.github.io/2018/07/22/数据类型与类型检测/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数据类型与类型检测</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -343,7 +344,7 @@ console.log(Object.prototype.toString.call(c));     //[Object Function]
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#在JavaScript中有哪些数据类型？"><span class="toc-number">1.</span> <span class="toc-text">在JavaScript中有哪些数据类型？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何对数据类型进行判断？"><span class="toc-number">2.</span> <span class="toc-text">如何对数据类型进行判断？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#typeof后面经常会跟一个（），这对括号可否省略？"><span class="toc-number">3.</span> <span class="toc-text">typeof后面经常会跟一个（），这对括号可否省略？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#那么如何对Object类型进行判断？"><span class="toc-number">4.</span> <span class="toc-text">那么如何对Object类型进行判断？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小结"><span class="toc-number">5.</span> <span class="toc-text">小结</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数组都有哪些方法？"><span class="toc-number">1.</span> <span class="toc-text">数组都有哪些方法？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数组的方法中，有哪些是对原数组有影响的？"><span class="toc-number">2.</span> <span class="toc-text">数组的方法中，有哪些是对原数组有影响的？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何将字符串转换为数组，数组转为字符串？"><span class="toc-number">3.</span> <span class="toc-text">如何将字符串转换为数组，数组转为字符串？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一个数组如何实现去重？"><span class="toc-number">4.</span> <span class="toc-text">一个数组如何实现去重？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#能否写一行代码进行数组去重？"><span class="toc-number">5.</span> <span class="toc-text">能否写一行代码进行数组去重？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#es5中最简单的数组去重？"><span class="toc-number">6.</span> <span class="toc-text">es5中最简单的数组去重？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有哪些是伪数组？"><span class="toc-number">7.</span> <span class="toc-text">有哪些是伪数组？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#何如将伪数组转换为数组？"><span class="toc-number">8.</span> <span class="toc-text">何如将伪数组转换为数组？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#访问数组元素需要注意的事"><span class="toc-number">9.</span> <span class="toc-text">访问数组元素需要注意的事</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小结"><span class="toc-number">10.</span> <span class="toc-text">小结</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -461,19 +462,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Cordova</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">转载</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">GIT笔记</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -485,11 +482,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">碎碎念</a>
+                <a href="javascript:void(0)" class="js-tag color1">GIT笔记</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">跨域解决方案</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">碎碎念</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -505,11 +506,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">面试心得</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color1">vue组件</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://hx-dl.github.io">
-  <title>Archives: 2018 | 行无忌的成长小屋</title>
+  <title>Cordova项目在Android下App细节打理 | 行无忌的成长小屋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="行无忌的成长小屋">
-<meta property="og:url" content="https://hx-dl.github.io/archives/2018/page/2/index.html">
+  <meta name="description" content="沉浸式状态栏为了实现沉浸式状态栏，在状态栏 StatusBar 插件 cordova-plugin-statusbar 2.4.2 &amp;quot;StatusBar&amp;quot;中做了些修改  目前蓝湖 app 采用沉浸式  状态栏方案，类似淘宝 app 的状态栏效果，任务栏半透明覆盖在 app 内容上  该插件本身不支持设置为沉浸式任务栏效果，所以对插件相关代码做了修改 将原来的 StatusB">
+<meta name="keywords" content="Cordova">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cordova项目在Android下App细节打理">
+<meta property="og:url" content="https://hx-dl.github.io/2019/01/23/Cordova项目在Android下App细节打理/index.html">
 <meta property="og:site_name" content="行无忌的成长小屋">
+<meta property="og:description" content="沉浸式状态栏为了实现沉浸式状态栏，在状态栏 StatusBar 插件 cordova-plugin-statusbar 2.4.2 &amp;quot;StatusBar&amp;quot;中做了些修改  目前蓝湖 app 采用沉浸式  状态栏方案，类似淘宝 app 的状态栏效果，任务栏半透明覆盖在 app 内容上  该插件本身不支持设置为沉浸式任务栏效果，所以对插件相关代码做了修改 将原来的 StatusB">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-22T17:56:53.414Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="行无忌的成长小屋">
+<meta name="twitter:title" content="Cordova项目在Android下App细节打理">
+<meta name="twitter:description" content="沉浸式状态栏为了实现沉浸式状态栏，在状态栏 StatusBar 插件 cordova-plugin-statusbar 2.4.2 &amp;quot;StatusBar&amp;quot;中做了些修改  目前蓝湖 app 采用沉浸式  状态栏方案，类似淘宝 app 的状态栏效果，任务栏半透明覆盖在 app 内容上  该插件本身不支持设置为沉浸式任务栏效果，所以对插件相关代码做了修改 将原来的 StatusB">
   
   
     <link rel="icon" href="/hx-dl.github.io/img/favicon.png">
@@ -146,296 +151,224 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Cordova项目在Android下App细节打理" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Cordova项目在Android下App细节打理
+    </h1>
+  
+
+        
+        <a href="/hx-dl.github.io/2019/01/23/Cordova项目在Android下App细节打理/" class="archive-article-date">
+  	<time datetime="2019-01-22T16:51:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-23</time>
+</a>
+        
+        
+          <span class="archive-article-date">
+                阅读量 <span id="busuanzi_value_page_pv"></span>
+              </span>
+          
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="沉浸式状态栏"><a href="#沉浸式状态栏" class="headerlink" title="沉浸式状态栏"></a>沉浸式状态栏</h2><p>为了实现沉浸式状态栏，在状态栏 StatusBar 插件 <code>cordova-plugin-statusbar 2.4.2 &quot;StatusBar&quot;</code>中做了些修改</p>
+<ol>
+<li>目前蓝湖 app 采用沉浸式  状态栏方案，类似淘宝 app 的状态栏效果，任务栏半透明覆盖在 app 内容上</li>
+</ol>
+<p>该插件本身不支持设置为沉浸式任务栏效果，所以对插件相关代码做了修改</p>
+<p>将原来的 StatusBar.java 中的 run 方法</p>
+<pre><code>public void run() {
+    // Clear flag FLAG_FORCE_NOT_FULLSCREEN which is set initially
+    // by the Cordova.
+    Window window = cordova.getActivity().getWindow();
+    Window window = cordova.getActivity().getWindow();
+    window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+    window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+    window.setStatusBarColor(Color.TRANSPARENT);
+    window.setNavigationBarColor(Color.TRANSPARENT);
+    window.clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+
+    // Read &apos;StatusBarBackgroundColor&apos; from config.xml, default is #000000.
+    // setStatusBarBackgroundColor(preferences.getString(&quot;StatusBarBackgroundColor&quot;, &quot;#000000&quot;));
+
+    // Read &apos;StatusBarStyle&apos; from config.xml, default is &apos;lightcontent&apos;.
+    // setStatusBarStyle(preferences.getString(&quot;StatusBarStyle&quot;, &quot;lightcontent&quot;));
+}
+</code></pre><p>改为</p>
+<pre><code>public void run() {
+    // Clear flag FLAG_FORCE_NOT_FULLSCREEN which is set initially
+    // by the Cordova.
+    Window window = cordova.getActivity().getWindow();
+    window.clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+    if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) {
+    window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+    }
+    if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP) {
+    window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+    window.setStatusBarColor(Color.TRANSPARENT);
+    }
+}
+</code></pre><ol start="2">
+<li>设置为全屏后遇到的新问题，这是 android 平台上一个历史久远的 bug, 代号 5497，并且 google 执意不予解决, 在 Stack Overflow 社区被称之为 AndroidBug5497Workaround.</li>
+</ol>
+<blockquote>
+<p>AndroidBug5497Workaround： android 平台的 Webview 在全屏下的呼出软键盘无法触发布局重计算</p>
+</blockquote>
+<p>这个问题会导致有  位于底部的输入框  获取到焦点后，弹出的软键盘遮挡输入框</p>
+<p>为了解决这个问题，在项目的 CordovaLib 目录下引入了 AndroidBug5497LanhuDebugger.java 文件， 然后在 CordovaActivity.java 文件中的 <code>setContentView(appView.getView());</code> 方法执行后，调用  该类的方法</p>
+<pre><code>setContentView(appView.getView());
+AndroidBug5497LanhuDebugger.assistActivity(this);
+</code></pre><h2 id="全屏启动页"><a href="#全屏启动页" class="headerlink" title="全屏启动页"></a>全屏启动页</h2><p>找到项目 app/src/main 目录下的 AndroidManifest.xml 文件，在 mainactivity 中修改配置属性：</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:theme=&quot;@style/AppTheme&quot;</span><br></pre></td></tr></table></figure>
+</code></pre><p>添加配置主题</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;resources xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;</span><br><span class="line">    &lt;style name=&quot;AppTheme&quot; parent=&quot;@android:style/Theme.NoTitleBar&quot;&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowLayoutInDisplayCutoutMode&quot;&gt;shortEdges&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:navigationBarColor&quot;&gt;@android:color/transparent&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:statusBarColor&quot;&gt;@android:color/transparent&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowFullscreen&quot;&gt;true&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowIsTranslucent&quot;&gt;false&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowDisablePreview&quot;&gt;false&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowContentOverlay&quot;&gt;@null&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowBackground&quot;&gt;@drawable/screen&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:background&quot;&gt;@null&lt;/item&gt;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/resources&gt;</span><br></pre></td></tr></table></figure>
+</code></pre><h2 id="结合自定义主题兼容安卓-8-0-9-0-刘海屏、全面屏"><a href="#结合自定义主题兼容安卓-8-0-9-0-刘海屏、全面屏" class="headerlink" title="结合自定义主题兼容安卓 8.0 9.0 刘海屏、全面屏"></a>结合自定义主题兼容安卓 8.0 9.0 刘海屏、全面屏</h2><p>在 AndroidManifest.xml 文件的 application 选项中添加配置：</p>
+<pre><code>&lt;meta-data android:name=&quot;android.max_aspect&quot; android:value=&quot;2.4&quot; /&gt;
+&lt;meta-data android:name=&quot;android.notch_support&quot; android:value=&quot;true&quot; /&gt;
+&lt;meta-data android:name=&quot;notch.config&quot; android:value=&quot;portrait|landscape&quot; /&gt;
+&lt;meta-data android:name=&quot;android.max_aspect&quot; android:value=&quot;ratio_float&quot; /&gt;
+</code></pre><h2 id="解决系统字体缩放对-app-界面的影响"><a href="#解决系统字体缩放对-app-界面的影响" class="headerlink" title="解决系统字体缩放对 app 界面的影响"></a>解决系统字体缩放对 app 界面的影响</h2><p>由于 app 在 webview 中运行，手机系统设置  改变字体大小会对 app 的样式造成影响 ，需要在找到 <code>CordovaLib\java\org.apache.cordova\engine\SystemWebViewEngine.java</code> 文件，在里面可以对 webView 进行修改： 在<code>initWebViewSettings</code>方法中加入设置代码：<code>settings.setTextZoom(100);</code>,即可消除系统字体大小的影响</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">settings.setJavaScriptEnabled(true);</span><br><span class="line">settings.setJavaScriptCanOpenWindowsAutomatically(true);</span><br><span class="line">settings.setLayoutAlgorithm(LayoutAlgorithm.NORMAL);</span><br><span class="line">settings.setTextZoom(100);</span><br></pre></td></tr></table></figure>
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/hx-dl.github.io/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/hx-dl.github.io/2018/05/30/两步快速获取小程序源码/" class="archive-article-date">
-  	<time datetime="2018-05-30T04:29:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/hx-dl.github.io/2018/05/30/两步快速获取小程序源码/">两步快速获取小程序源码</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">反解小程序</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Cordova</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://hx-dl.github.io/2019/01/23/Cordova项目在Android下App细节打理/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/hx-dl.github.io/2018/05/26/VS code未找到Git的问题/" class="archive-article-date">
-  	<time datetime="2018-05-25T16:21:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-26</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/hx-dl.github.io/2019/01/23/cordova-vue-项目做微信QQ分享遇到的坑/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Cordova+Vue 项目做微信QQ分享遇到的坑</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/hx-dl.github.io/2018/05/26/VS code未找到Git的问题/">解决vscode未找到Git的问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">工具配置</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#沉浸式状态栏"><span class="toc-number">1.</span> <span class="toc-text">沉浸式状态栏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#全屏启动页"><span class="toc-number">2.</span> <span class="toc-text">全屏启动页</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结合自定义主题兼容安卓-8-0-9-0-刘海屏、全面屏"><span class="toc-number">3.</span> <span class="toc-text">结合自定义主题兼容安卓 8.0 9.0 刘海屏、全面屏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决系统字体缩放对-app-界面的影响"><span class="toc-number">4.</span> <span class="toc-text">解决系统字体缩放对 app 界面的影响</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/hx-dl.github.io/2018/05/12/博文置顶方法/" class="archive-article-date">
-  	<time datetime="2018-05-11T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-12</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/hx-dl.github.io/2018/05/12/博文置顶方法/">如何将Hexo文章置顶</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hexo技巧</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/hx-dl.github.io/2018/05/05/JavaScript设计模式学习笔记-模板方法模式/" class="archive-article-date">
-  	<time datetime="2018-05-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/hx-dl.github.io/2018/05/05/JavaScript设计模式学习笔记-模板方法模式/">JavaScript设计模式学习笔记-模板方法模式</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">设计模式学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/hx-dl.github.io/2018/05/04/Footer，完美的绝对底部/" class="archive-article-date">
-  	<time datetime="2018-05-04T08:25:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/hx-dl.github.io/2018/05/04/Footer，完美的绝对底部/">Sticky Footer，完美的绝对底部</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">转载</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/hx-dl.github.io/2018/04/23/git使用技巧/" class="archive-article-date">
-  	<time datetime="2018-04-23T06:13:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/hx-dl.github.io/2018/04/23/git使用技巧/">总结的GIT常用命令</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">GIT笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/hx-dl.github.io/2018/03/05/前端，你好/" class="archive-article-date">
-  	<time datetime="2018-03-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/hx-dl.github.io/2018/03/05/前端，你好/">前端，你好</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">碎碎念</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/hx-dl.github.io/archives/2018/">&laquo; Prev</a><a class="page-number" href="/hx-dl.github.io/archives/2018/">1</a><span class="page-number current">2</span>
-    </nav>
-  
 
 
           </div>
@@ -463,8 +396,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

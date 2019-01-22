@@ -6,30 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://hx-dl.github.io">
-  <title>两步快速获取小程序源码 | 行无忌的成长小屋</title>
+  <title>Tag: JavaScript基础 | 行无忌的成长小屋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近在学习微信小程序开发，半个月学习下来，很想实战一下踩踩坑，于是就仿写了某个小程序的前端实现，在实际练手中，完全是黑盒的，纯靠推测，部分效果在各种尝试后能能做出大致的实现，但是有些细节，实在不知道如何去实现。这种时候，真的很想一窥源码，查看究竟，看看大厂的前端大神们是如何规避了小程序的一些比较奇葩的坑。 于是就想到获取到小程序地源文件，然后尝试对其进行反编译还原为源代码，来作为学习参考。我百度了">
-<meta name="keywords" content="反解小程序">
-<meta property="og:type" content="article">
-<meta property="og:title" content="两步快速获取小程序源码">
-<meta property="og:url" content="https://hx-dl.github.io/2018/05/30/只需两步获取任何小程序源码/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="行无忌的成长小屋">
+<meta property="og:url" content="https://hx-dl.github.io/tags/JavaScript基础/index.html">
 <meta property="og:site_name" content="行无忌的成长小屋">
-<meta property="og:description" content="最近在学习微信小程序开发，半个月学习下来，很想实战一下踩踩坑，于是就仿写了某个小程序的前端实现，在实际练手中，完全是黑盒的，纯靠推测，部分效果在各种尝试后能能做出大致的实现，但是有些细节，实在不知道如何去实现。这种时候，真的很想一窥源码，查看究竟，看看大厂的前端大神们是如何规避了小程序的一些比较奇葩的坑。 于是就想到获取到小程序地源文件，然后尝试对其进行反编译还原为源代码，来作为学习参考。我百度了">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163ddb3a306eb5e0?w=565&h=379&f=png&s=49809">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/5/31/163b4a57d73e7627?w=585&h=744&f=png&s=133268">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/5/31/163b1d9e47defe2d?w=565&h=356&f=png&s=47891">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/5/31/163b1dca0c225daa?w=565&h=467&f=png&s=63362">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/26/1643ac62f831b893?w=430&h=459&f=png&s=162783">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163ddbade4a979db?w=694&h=534&f=png&s=152724">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/5/31/163b1e8c7ccb8878?w=714&h=274&f=png&s=19451">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/5/31/163b1ec00dd5b4e0?w=411&h=474&f=png&s=18702">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163ddbd72f5ae515?w=723&h=689&f=png&s=212697">
-<meta property="og:updated_time" content="2018-07-22T04:50:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="两步快速获取小程序源码">
-<meta name="twitter:description" content="最近在学习微信小程序开发，半个月学习下来，很想实战一下踩踩坑，于是就仿写了某个小程序的前端实现，在实际练手中，完全是黑盒的，纯靠推测，部分效果在各种尝试后能能做出大致的实现，但是有些细节，实在不知道如何去实现。这种时候，真的很想一窥源码，查看究竟，看看大厂的前端大神们是如何规避了小程序的一些比较奇葩的坑。 于是就想到获取到小程序地源文件，然后尝试对其进行反编译还原为源代码，来作为学习参考。我百度了">
-<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/6/8/163ddb3a306eb5e0?w=565&h=379&f=png&s=49809">
+<meta name="twitter:title" content="行无忌的成长小屋">
   
   
     <link rel="icon" href="/hx-dl.github.io/img/favicon.png">
@@ -161,310 +146,98 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-只需两步获取任何小程序源码" class="article article-type-post " itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      两步快速获取小程序源码
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/hx-dl.github.io/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/hx-dl.github.io/2018/07/24/数组与常用方法/" class="archive-article-date">
+  	<time datetime="2018-07-24T12:40:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-24</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/hx-dl.github.io/2018/07/24/数组与常用方法/">数组与常用方法</a>
     </h1>
   
 
-        
-        <a href="/hx-dl.github.io/2018/05/30/只需两步获取任何小程序源码/" class="archive-article-date">
-  	<time datetime="2018-05-30T04:29:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-30</time>
-</a>
-        
-        
-          <span class="archive-article-date">
-                阅读量 <span id="busuanzi_value_page_pv"></span>
-              </span>
+        <div class="article-info info-on-right">
           
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近在学习微信小程序开发，半个月学习下来，很想实战一下踩踩坑，于是就仿写了某个小程序的前端实现，在实际练手中，完全是黑盒的，纯靠推测，部分效果在各种尝试后能能做出大致的实现，但是有些细节，实在不知道如何去实现。这种时候，真的很想一窥源码，查看究竟，看看大厂的前端大神们是如何规避了小程序的一些比较奇葩的坑。</p>
-<p>于是就想到获取到小程序地源文件，然后尝试对其进行反编译还原为源代码，来作为学习参考。我百度了各种关于小程序地反编译教程，但是感觉都不太适合像我这样地初学小白，踩了挺多坑。在这里把我重新简化好的，<strong>快速地获取一个微信小程序源码</strong>的方式记录下来。</p>
-<a id="more"></a>
-<hr>
-<h1 id="简单聊一下xxxxx-wxapkg"><a href="#简单聊一下xxxxx-wxapkg" class="headerlink" title="简单聊一下xxxxx.wxapkg"></a>简单聊一下<code>xxxxx.wxapkg</code></h1><p> <strong>先来想想一个很简单的问题，</strong>小程序的源文件存放在哪<strong>？</strong></p>
-<ul>
-<li>在微信的服务器上。</li>
-</ul>
-<p><strong>普通用户想要直接获取到在微信服务器去获取，肯定是十分困难的，有没有别的办法呢？</strong></p>
-<ul>
-<li>简单思考一下我们使用小程序的场景就会明白，当我们点开一个微信小程序的时候，其实是微信已经将它的从服务器上下载到了手机，然后再来运行的。</li>
-<li>所以我们应该可以从<code>手机本地</code>找到到已经下载过的小程序文件</li>
-</ul>
-<p><strong>那么小程序文件存储在手机的什么位置呢？</strong></p>
-<ul>
-<li>这里只以安卓手机为例，毕竟穷逼不曾拥有过苹果手机</li>
-<li>具体目录位置直接给出：</li>
-<li><code>/data/data/com.tencent.mm/MicroMsg//appbrand/pkg/</code></li>
-<li><p>在这个目录下，会发现一些 <code>xxxxxxx.wxapkg</code> 类型的文件，这些就是微信小程序的包</p>
-<p><strong>微信小程序的格式就是:<code>.wxapkg</code></strong></p>
-</li>
-<li>.wxapkg是一个二进制文件，有其自己的一套结构。</li>
-<li><p><a href="http://lrdcq.com/me/read.php/66.htm" target="_blank" rel="noopener">微信小程序源码阅读笔记</a>lrdcq大神的这篇博文有对.wxapkg的详细介绍，当然你也不可以不看</p>
-</li>
-<li><p>这里有个<strong>小坑</strong>，想要进入到上面这个目录的话，用手机自带的文件管理器是不行的，需要使用到第三方的文件管理器，比如：<code>RE文件管理器</code>，并且安卓需要取得root权限，苹果手机要求越狱，且<strong>iphone的越狱难度&gt;&gt;安卓获取root</strong>，不管越狱还是root，这都太费劲，当然有能力的同学可以直接从手机上来操作，但是在这里<strong>不推荐从真机上获取</strong>。</p>
-</li>
-</ul>
-<h1 id="准备材料"><a href="#准备材料" class="headerlink" title="准备材料"></a>准备材料</h1><ol>
-<li>node.js运行环境<ul>
-<li>如果没有安装nodejs，请先安装一下</li>
-<li>下载地址：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></li>
-</ul>
-</li>
-<li>反编译的脚本<ul>
-<li>这里提供一个Github上<code>qwerty472123</code>大神写的node.js版本的，当然也有其它版本的，例如<code>python</code>版本，这里我只是简单地用node.js版本举例</li>
-<li>地址：<a href="https://github.com/qwerty472123/wxappUnpacker" target="_blank" rel="noopener">https://github.com/qwerty472123/wxappUnpacker</a></li>
-</ul>
-</li>
-<li>安卓模拟器（要求自带root权限）<ul>
-<li>我使用的是<code>夜神模拟器</code>，你也可以自选</li>
-<li>下载地址：<a href="https://www.yeshen.com/cn/download/fullPackage" target="_blank" rel="noopener">https://www.yeshen.com/cn/download/fullPackage</a></li>
-</ul>
-</li>
-</ol>
-<h1 id="详细步骤："><a href="#详细步骤：" class="headerlink" title="详细步骤："></a>详细步骤：</h1><h2 id="使用安卓模拟器获取到-wxapkg文件"><a href="#使用安卓模拟器获取到-wxapkg文件" class="headerlink" title="使用安卓模拟器获取到.wxapkg文件"></a>使用安卓模拟器获取到.wxapkg文件</h2><p> 不用越狱，不用root，使用电脑端的<strong>安卓模拟器</strong>来获取是一个<strong>非常简单快捷的</strong>获取方式，具体步骤如下：</p>
-<ol>
-<li><p>打开安装好的安卓模拟器，并在模拟器中安装<code>QQ</code>、<code>微信</code>、<code>RE管理器</code></p>
-<ul>
-<li><code>QQ</code>、<code>微信</code>在模拟器自带的应用商店里搜索下载安装即可</li>
-<li><code>RE管理器</code>的下载地址：<a href="https://pan.baidu.com/s/1PPBx08rNutXxhlMMJbuTpQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1PPBx08rNutXxhlMMJbuTpQ</a></li>
-<li>下载好后直接拖拽进打开的模拟器窗口就会自动安装</li>
-</ul>
-</li>
-<li><p>设置一下模拟器</p>
-<ul>
-<li>以我个人认为比较好用的<code>夜神模拟器</code>举例</li>
-<li>首先到模拟器内部设置超级用户权限</li>
-</ul>
-</li>
-</ol>
-<p><img src="https://user-gold-cdn.xitu.io/2018/6/8/163ddb3a306eb5e0?w=565&amp;h=379&amp;f=png&amp;s=49809" alt=""><br><img src="https://user-gold-cdn.xitu.io/2018/5/31/163b4a57d73e7627?w=585&amp;h=744&amp;f=png&amp;s=133268" alt=""></p>
-<ul>
-<li>这些操作的目的都是为了能让<code>RE管理器</code>顺利的获取到ROOT权限</li>
-</ul>
-<ol start="3">
-<li><p>接下来在模拟器里打开微信，然后在微信中运行你想要获取的小程序（这一步微信就会把目标小程序的源文件包从服务器下载到了本地）</p>
-<ul>
-<li>就以我说的这款共享单车的小程序举例</li>
-<li>在模拟器微信中运行一下后，<strong>切回模拟器桌面，运行RE浏览器</strong> 来到目录</li>
-<li><code>/data/data/com.tencent.mm/MicroMsg//appbrand/pkg/</code></li>
-<li>就抵达了目的文件夹<br><img src="https://user-gold-cdn.xitu.io/2018/5/31/163b1d9e47defe2d?w=565&amp;h=356&amp;f=png&amp;s=47891" alt=""></li>
-<li>你会看到发现里面的一些.wxapkg后缀的文件，就是它们没错啦，可以根据时间来判断那个是你刚才从服务器下载过来的</li>
-<li>一般小程序的文件不会太大，长按，然后点右上角选项将其<strong>压缩为zip包</strong>,然后再将压缩好的包通过QQ发送到<strong>我的电脑</strong></li>
-<li>注：<strong>如果不进行压缩的话，QQ会提示文件不可用</strong><br><img src="https://user-gold-cdn.xitu.io/2018/5/31/163b1dca0c225daa?w=565&amp;h=467&amp;f=png&amp;s=63362" alt=""></li>
-<li>所以QQ的这个功能可以让我们很方便的拿到源文件，而不必到电脑目录去找模拟器的文件目录。</li>
-<li>解压。这样几步简单操作，就成功拿到了小程序的源文件了。</li>
-</ul>
-<h2 id="使用反编译脚本解包-wxapkg"><a href="#使用反编译脚本解包-wxapkg" class="headerlink" title="使用反编译脚本解包 wxapkg"></a>使用反编译脚本解包 wxapkg</h2><ul>
-<li>到这里你应该已经将反编译脚本从github下载 或者 clone 到本地某个目录</li>
-<li>打开nodejs命令窗口，如果有vscode的直接使用vscode更方便，没有安装的，打开如下这个命令行窗口</li>
-<li><p><img src="https://user-gold-cdn.xitu.io/2018/6/26/1643ac62f831b893?w=430&amp;h=459&amp;f=png&amp;s=162783" alt=""></p>
-</li>
-<li><p>用cd命令进入到你clone或者下载好的<strong>反编译脚本目录</strong>下</p>
-</li>
-<li><p>在node命令窗口中依次<strong>安装</strong>如下依赖（依次把每条安装命令复制到命令行回车就可以）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">npm install esprima</span><br><span class="line"></span><br><span class="line">npm install css-tree</span><br><span class="line"></span><br><span class="line">npm install cssbeautify</span><br><span class="line"></span><br><span class="line">npm install vm2</span><br><span class="line"></span><br><span class="line">npm install uglify-es</span><br><span class="line"></span><br><span class="line">npm install js-beautify</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装好依赖之后，就是最后一步了，反编译 .wxapkg 文件</p>
-</li>
-<li><p>在当前目录下输入</p>
-<p>   node wuWxapkg.js [-d] &lt;files…&gt;    //files 就是你想要反编译的文件名<br>例如：我有一个需要反编译的文件 <code>_163200311_32.wxapkg</code> 已经解压到了D盘根目录下,那么就输出命令</p>
-<p>   node .\wuWxapkg.js D:_163200311_32.wxapkg</p>
-</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>小技巧：注意这里<strong>斜杆别打反</strong>了，你可以输入文件名前几个字符，然后<strong>Tab键</strong>会自动补全文件名  </p>
-<ul>
-<li>回车运行</li>
-</ul>
-</blockquote>
-<p><img src="https://user-gold-cdn.xitu.io/2018/6/8/163ddbade4a979db?w=694&amp;h=534&amp;f=png&amp;s=152724" alt=""></p>
-<ul>
-<li><p>反编译脚本就能一步将.wxapkg 文件还原为微信开发者工具能够运行的源文件，<strong>目录地址和你反编译的文件地址是一样的</strong><br><img src="https://user-gold-cdn.xitu.io/2018/5/31/163b1e8c7ccb8878?w=714&amp;h=274&amp;f=png&amp;s=19451" alt=""></p>
-</li>
-<li><p>看到这些文件结构，是不是非常熟悉！我们在微信开发者工具新增项目即可打开<br><img src="https://user-gold-cdn.xitu.io/2018/5/31/163b1ec00dd5b4e0?w=411&amp;h=474&amp;f=png&amp;s=18702" alt=""></p>
-</li>
-<li>运行成功，源码获取完成</li>
-</ul>
-<p><img src="https://user-gold-cdn.xitu.io/2018/6/8/163ddbd72f5ae515?w=723&amp;h=689&amp;f=png&amp;s=212697" alt=""></p>
-<blockquote>
-<p>如果运行出现了点问题：可以试试，点击开发者工具 详情 <strong>去掉 es6转es5 的勾</strong>，<strong>勾上不校验安全域名</strong></p>
-</blockquote>
-<blockquote>
-<p>勾选了还是无法运行？那么请在详情里把<strong>基础版本库</strong>调低至1.8左右，再试试</p>
-</blockquote>
-<blockquote>
-<p>出现找不到某些文件的情况怎么办？我只能告诉：<strong>删！删！删</strong>！app.json里面,提示找不到那个文件，就将pages下注册的该页面语句暂时删除掉。删到可以运行为止</p>
-</blockquote>
-<blockquote>
-<p>还是无法运行？那你可以在我的博客里找到我的联系方式，申请加我好友，我会尝试帮你解决，这是免费的，就当交个朋友</p>
-</blockquote>
-<h1 id="两步即可完成"><a href="#两步即可完成" class="headerlink" title="两步即可完成"></a>两步即可完成</h1><p>至此我们就通过非常简单的方式获取到了一个想要的小程序源文件，并对其进行了反编译还原<br>以后想要再反编译其他的小程序，非常快速，<strong>只需要两步</strong></p>
-<ol>
-<li><strong>使用模拟器找到小程序.wxapkg文件</strong></li>
-<li><strong>使用nodejs 反编译脚本将.wxapkg文件反编译</strong></li>
-</ol>
-<blockquote>
-<p>使用此方法，绝大部分的小程序都能正常反编译出来，但是也会有一些特殊的情况，具体可以查看<code>qwerty472123</code>大神Github的<code>readme.md</code>文件</p>
-</blockquote>
-<h1 id="写在后面的话"><a href="#写在后面的话" class="headerlink" title="写在后面的话"></a>写在后面的话</h1><p> 早在跳一跳小游戏火的时候，就有人通过小程序的appid和版本号，构造URL直接从服务器端下载该小程序的源码wxapkg文件。但是这种方法很快就被封了。</p>
-<p> 上线的源代码能如此简单的被获取到，不得不说小程序的源码安全存在一些隐患，不过现在的小程序开发框架会用babel这样的打包工具把js逻辑代码揉在一个js文件里，转编译成看不懂的代码，这样，即使被获取了源码，也很难窥得蛛丝马迹。</p>
-<blockquote>
-<p>这里介绍的方法只想提供给像我一样的小程序新手用来学习和仿写练手，获取仿写素材。</p>
-</blockquote>
-<p> 小程序作为微信生态内的新生力量，不仅被官方，也被很多开发者和内容创业者寄予厚望，处于对代码的安全性的考虑，这里的获取方式，不确定以后是否还行得通。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">反解小程序</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JavaScript基础</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://hx-dl.github.io/2018/05/30/只需两步获取任何小程序源码/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
   
-<nav id="article-nav">
-  
-    <a href="/hx-dl.github.io/2018/06/10/撸一个『改良版青桔单车』/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          撸一个『改良版青🍊单车』
-        
-      </div>
-    </a>
-  
-  
-    <a href="/hx-dl.github.io/2018/05/26/VS code未找到Git的问题/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">解决vscode未找到Git的问题</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/hx-dl.github.io/2018/07/22/数据类型与类型检测/" class="archive-article-date">
+  	<time datetime="2018-07-22T14:25:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-22</time>
+</a>
         </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简单聊一下xxxxx-wxapkg"><span class="toc-number">1.</span> <span class="toc-text">简单聊一下xxxxx.wxapkg</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#准备材料"><span class="toc-number">2.</span> <span class="toc-text">准备材料</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#详细步骤："><span class="toc-number">3.</span> <span class="toc-text">详细步骤：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用安卓模拟器获取到-wxapkg文件"><span class="toc-number">3.1.</span> <span class="toc-text">使用安卓模拟器获取到.wxapkg文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用反编译脚本解包-wxapkg"><span class="toc-number">3.2.</span> <span class="toc-text">使用反编译脚本解包 wxapkg</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#两步即可完成"><span class="toc-number">4.</span> <span class="toc-text">两步即可完成</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#写在后面的话"><span class="toc-number">5.</span> <span class="toc-text">写在后面的话</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/hx-dl.github.io/2018/07/22/数据类型与类型检测/">数据类型与类型检测</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JavaScript基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
         </div>
-        
-    </div>
-</aside>
-
-
-
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
   
   
+    </div></section>
   
 
-  
-
-  
-
-  
-
+    
 
 
           </div>
@@ -492,9 +265,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
@@ -562,19 +335,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Cordova</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">转载</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">GIT笔记</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -586,11 +355,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">碎碎念</a>
+                <a href="javascript:void(0)" class="js-tag color1">GIT笔记</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">跨域解决方案</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">碎碎念</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -606,11 +379,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">面试心得</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color1">vue组件</a>
               </li>
              
               <li class="article-tag-list-item">

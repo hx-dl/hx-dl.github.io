@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://hx-dl.github.io">
-  <title>Archives: 2018 | 行无忌的成长小屋</title>
+  <title>数据类型与类型检测 | 行无忌的成长小屋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="行无忌的成长小屋">
-<meta property="og:url" content="https://hx-dl.github.io/archives/2018/page/2/index.html">
+  <meta name="description" content="在JavaScript中有哪些数据类型？JavaScript中的数据类型有6种： 基础数据类型5种：Boolean、String、Number、undefined、null 复杂数据类型1种：Object 如果在ES6中，新增了一种symbol类型，表示独一无二的值。并且symbol类型在初始化的时候不需要使用new操作符。">
+<meta name="keywords" content="JavaScript基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据类型与类型检测">
+<meta property="og:url" content="https://hx-dl.github.io/2018/07/22/数据类型与类型检测/index.html">
 <meta property="og:site_name" content="行无忌的成长小屋">
+<meta property="og:description" content="在JavaScript中有哪些数据类型？JavaScript中的数据类型有6种： 基础数据类型5种：Boolean、String、Number、undefined、null 复杂数据类型1种：Object 如果在ES6中，新增了一种symbol类型，表示独一无二的值。并且symbol类型在初始化的时候不需要使用new操作符。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-22T15:23:57.585Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="行无忌的成长小屋">
+<meta name="twitter:title" content="数据类型与类型检测">
+<meta name="twitter:description" content="在JavaScript中有哪些数据类型？JavaScript中的数据类型有6种： 基础数据类型5种：Boolean、String、Number、undefined、null 复杂数据类型1种：Object 如果在ES6中，新增了一种symbol类型，表示独一无二的值。并且symbol类型在初始化的时候不需要使用new操作符。">
   
   
     <link rel="icon" href="/hx-dl.github.io/img/favicon.png">
@@ -146,296 +151,219 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-数据类型与类型检测" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      数据类型与类型检测
+    </h1>
+  
+
+        
+        <a href="/hx-dl.github.io/2018/07/22/数据类型与类型检测/" class="archive-article-date">
+  	<time datetime="2018-07-22T14:25:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-22</time>
+</a>
+        
+        
+          <span class="archive-article-date">
+                阅读量 <span id="busuanzi_value_page_pv"></span>
+              </span>
+          
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="在JavaScript中有哪些数据类型？"><a href="#在JavaScript中有哪些数据类型？" class="headerlink" title="在JavaScript中有哪些数据类型？"></a>在JavaScript中有哪些数据类型？</h2><p>JavaScript中的数据类型有6种：</p>
+<p>基础数据类型5种：<code>Boolean</code>、<code>String</code>、<code>Number</code>、<code>undefined</code>、<code>null</code></p>
+<p>复杂数据类型1种：<code>Object</code></p>
+<p>如果在ES6中，新增了一种<code>symbol</code>类型，表示独一无二的值。并且<code>symbol</code>类型在初始化的时候不需要使用<code>new</code>操作符。</p>
+<a id="more"></a>
+<h2 id="如何对数据类型进行判断？"><a href="#如何对数据类型进行判断？" class="headerlink" title="如何对数据类型进行判断？"></a>如何对数据类型进行判断？</h2><pre><code>typeof (true);                //&quot;boolean&quot;
+typeof (&quot;xwj&quot;);               //&quot;string&quot;
+typeof (10);                  //&quot;number&quot;
+typeof (undefined);           //&quot;undefined&quot;
+typeof (null);                //&quot;object&quot;
+typeof ({});                  //&quot;object&quot;
+function a () {}
+typeof a;                     //&quot;function&quot;
+</code></pre><p>对于普通的数据类型来说，只需要使用typeof来进行判断就可以来，数据类型有6种，typeof 返回的值也有6种(<strong>在es6中是7种，包括symbol类型的返回值</strong>)，但是在typeof的返回值里面，null和Object返回的都是Object，而其余的都是对应的字符串</p>
+<h2 id="typeof后面经常会跟一个（），这对括号可否省略？"><a href="#typeof后面经常会跟一个（），这对括号可否省略？" class="headerlink" title="typeof后面经常会跟一个（），这对括号可否省略？"></a>typeof后面经常会跟一个（），这对括号可否省略？</h2><p>先想想<code>typeof</code>到底是什么？它的后面经常跟一对<code>（）</code>，看起来确实有点像一个函数，但其实不然，typeof它是一个一元运算符，和<code>+ - * /</code> 是一样的，所以typeof后面可以不跟<code>（）</code>，加<code>（）</code>只是为了看起来方便，不过这也造成了一些误解，但它就是一个一元运算符。</p>
+<p>一元运算符有很高的优先级，即使我们做多个 <code>&amp;&amp;</code>   <code>||</code> 的逻辑判断时，依然可以不使用括号</p>
+<pre><code>typeof a === &apos;number&apos; &amp;&amp; typeof b ===&apos;string&apos;;
+</code></pre><h2 id="如何对Object类型进行判断？"><a href="#如何对Object类型进行判断？" class="headerlink" title="如何对Object类型进行判断？"></a>如何对Object类型进行判断？</h2><p>其实对Object判断主要是区分某个对象是否为数组，有以下方法：</p>
+<p><strong>1.使用instanceof判断</strong></p>
+<pre><code>a instanceof Array      //true
+</code></pre><p><strong>2.使用原型链上的constructor判断</strong></p>
+<pre><code>a.__proto__.constructor===Array     //true
+</code></pre><p>这两种方法，看上去不错，但是实际上还是有些缺陷的，当我们的页面中存在多个frame，并且我们的判断是在两个iframe之间的时候，就很有可能出现问题了。由于每个iframe都属于自己的window对象，跨frame实例化的对象彼此是不共享原型链的，因此导致上述检测代码失效，实现如下</p>
+<pre><code>var iframe = document.createElement(&apos;iframe&apos;);          //创建iframe
+document.body.appendChild(iframe);                      //添加到body中
+xArray = window.frames[window.frames.length-1].Array;   //将xArray指向第二个iframe的引用
+var arr = new xArray(1,2,3);                            // 声明数组[1,2,3]
+alert(arr instanceof Array);                            // false
+alert(arr.constructor === Array);                       // false 
+</code></pre><p>因此，还有两种更值得推荐的方法：</p>
+<p><strong>3.使用Array.isArray() 方法判断</strong></p>
+<pre><code>var a = [];
+console.log(Array.isArray(a));   //true
+</code></pre><p>ECMAScript 5加入了 <strong>Array.isArray()</strong> 方法，可以准确地检测一个值是否为数组。但是它有个缺点就是不支持IE8之前的版本，不过～现在都9102年了，这个问题大概可以忽略了吧😏</p>
+<p><strong>4.使用Object.prototype.toString.call()方法判断</strong></p>
+<p>这是一种无懈可击的判断数组的方法，所有typeof返回值为”object”的对象都有一个内置属性：<code>[[Class]]</code></p>
+<p>Object.prototype.toString()获取到这个内置属性，然后根据它返回类似于”[object Array]”的字符串作为结果，利用这个方法，再配合call改变toString的this引用为待检测的对象，我们可以取得任何对象的内部属性[[Class]]</p>
+<pre><code>var a = {};
+var b = [];
+function c () {}
+console.log(Object.prototype.toString.call(a));     //[Object Object]
+console.log(Object.prototype.toString.call(b));     //[Object Array]
+console.log(Object.prototype.toString.call(c));     //[Object Function]
+</code></pre><p>Object.prototype.toString方法在ECMAScript 3中规范中就存在，也不用担心兼容性问题。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>数据类型在面试过程中，也是经常要被考察的第一个问题，但往往被我们所忽略，以自问自答的方式记录下来，补补之前欠下的笔记。</p>
+<p>关于Object.prototype.toString()方法，这里有一篇不错的文章：[JavaScript类型检查与内部属性<a href="https://blog.csdn.net/q1056843325/article/details/53080086" target="_blank" rel="noopener">[Class]]</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/hx-dl.github.io/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/hx-dl.github.io/2018/05/30/两步快速获取小程序源码/" class="archive-article-date">
-  	<time datetime="2018-05-30T04:29:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/hx-dl.github.io/2018/05/30/两步快速获取小程序源码/">两步快速获取小程序源码</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">反解小程序</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JavaScript基础</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://hx-dl.github.io/2018/07/22/数据类型与类型检测/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/hx-dl.github.io/2018/05/26/VS code未找到Git的问题/" class="archive-article-date">
-  	<time datetime="2018-05-25T16:21:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-26</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/hx-dl.github.io/2018/07/24/数组与常用方法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          数组与常用方法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/hx-dl.github.io/2018/07/20/围绕React衍生出的思考/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">围绕React衍生出的思考</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/hx-dl.github.io/2018/05/26/VS code未找到Git的问题/">解决vscode未找到Git的问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">工具配置</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#在JavaScript中有哪些数据类型？"><span class="toc-number">1.</span> <span class="toc-text">在JavaScript中有哪些数据类型？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何对数据类型进行判断？"><span class="toc-number">2.</span> <span class="toc-text">如何对数据类型进行判断？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#typeof后面经常会跟一个（），这对括号可否省略？"><span class="toc-number">3.</span> <span class="toc-text">typeof后面经常会跟一个（），这对括号可否省略？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何对Object类型进行判断？"><span class="toc-number">4.</span> <span class="toc-text">如何对Object类型进行判断？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小结"><span class="toc-number">5.</span> <span class="toc-text">小结</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/hx-dl.github.io/2018/05/12/博文置顶方法/" class="archive-article-date">
-  	<time datetime="2018-05-11T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-12</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/hx-dl.github.io/2018/05/12/博文置顶方法/">如何将Hexo文章置顶</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hexo技巧</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/hx-dl.github.io/2018/05/05/JavaScript设计模式学习笔记-模板方法模式/" class="archive-article-date">
-  	<time datetime="2018-05-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/hx-dl.github.io/2018/05/05/JavaScript设计模式学习笔记-模板方法模式/">JavaScript设计模式学习笔记-模板方法模式</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">设计模式学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/hx-dl.github.io/2018/05/04/Footer，完美的绝对底部/" class="archive-article-date">
-  	<time datetime="2018-05-04T08:25:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/hx-dl.github.io/2018/05/04/Footer，完美的绝对底部/">Sticky Footer，完美的绝对底部</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">转载</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/hx-dl.github.io/2018/04/23/git使用技巧/" class="archive-article-date">
-  	<time datetime="2018-04-23T06:13:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/hx-dl.github.io/2018/04/23/git使用技巧/">总结的GIT常用命令</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">GIT笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/hx-dl.github.io/2018/03/05/前端，你好/" class="archive-article-date">
-  	<time datetime="2018-03-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/hx-dl.github.io/2018/03/05/前端，你好/">前端，你好</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">碎碎念</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/hx-dl.github.io/archives/2018/">&laquo; Prev</a><a class="page-number" href="/hx-dl.github.io/archives/2018/">1</a><span class="page-number current">2</span>
-    </nav>
-  
 
 
           </div>
@@ -463,8 +391,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

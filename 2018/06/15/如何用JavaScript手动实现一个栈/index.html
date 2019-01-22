@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/15/164014668f84a797?w=400&h=250&f=jpeg&s=7865">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/15/1640144af65f774e?w=661&h=272&f=png&s=19200">
-<meta property="og:updated_time" content="2018-08-02T17:38:42.000Z">
+<meta property="og:updated_time" content="2019-01-22T16:19:32.448Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何用JavaScript手动实现一个栈">
 <meta name="twitter:description" content="什么是栈（Stack）  栈是一种遵从后进先出（LIFO）原则的有序集合。 新添加的或待删除的元素都保存在栈的末尾，称为栈顶，另一端叫栈底。 在栈里，新元素都靠近栈顶，旧元素都接近栈底">
@@ -184,49 +184,70 @@
 <li>栈是一种遵从后进先出（LIFO）原则的有序集合。</li>
 <li>新添加的或待删除的元素都保存在栈的末尾，称为栈顶，另一端叫栈底。</li>
 <li>在栈里，新元素都靠近栈顶，旧元素都接近栈底<a id="more"></a>
-<h1 id="现实中的例子"><a href="#现实中的例子" class="headerlink" title="现实中的例子"></a>现实中的例子</h1>在生活中也能发现很多栈的例子。例如，厨房里堆放的盘子，总是叠在上方的先被使用；输入框内容进行删除时，总是最后输入的先删除；弹夹中的子弹，越后装入的，越先发射……</li>
+</li>
 </ul>
-<h1 id="手动实现一个栈"><a href="#手动实现一个栈" class="headerlink" title="手动实现一个栈"></a>手动实现一个栈</h1><p>首先，创建一个类来表示栈<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function Stack () &#123; &#125;</span><br></pre></td></tr></table></figure></p>
-<p>我们需要选择一种数据结构来保存栈里的元素，可以选择数组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function Stack()&#123;</span><br><span class="line">    var items = [];     //用来保存栈里的元素</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>接下来，为栈添加一些方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">push(element(s));   //添加新元素到栈顶</span><br><span class="line">pop();              //移除栈顶的元素，同时返回被移除的元素</span><br><span class="line">peek();             //返回栈顶的元素，不对栈做任何修改</span><br><span class="line">isEmpty();          //如果栈里没有任何元素就返回true，否则false</span><br><span class="line">clear();            //移除栈里的所有元素</span><br><span class="line">size();             //返回栈里的元素个数,类似于数组的length属性</span><br></pre></td></tr></table></figure></p>
-<p>我们需要实现的第一个方法时<code>push</code>。用来往栈里添加新元素，有一点很重要：该方法只添加到栈顶，也就是栈的末尾。所以，可以这样写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.push = function (element) &#123;</span><br><span class="line">    items.push(element);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>利用数组的push方法，就可以实现在栈顶末尾添加新的元素了。</p>
-<p>接着，来实现<code>pop</code>方法，用来实现移除栈里的元素。栈遵从LIFO（后进先出）原则。移出去的是最后添加进去的元素。因此，可以使用数组的pop方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.pop = function () &#123;</span><br><span class="line">    return items.pop();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这样一来，这个栈自然就遵从了LIFO原则</p>
+<h1 id="现实中的例子"><a href="#现实中的例子" class="headerlink" title="现实中的例子"></a>现实中的例子</h1><p>在生活中也能发现很多栈的例子。例如，厨房里堆放的盘子，总是叠在上方的先被使用；输入框内容进行删除时，总是最后输入的先删除；弹夹中的子弹，越后装入的，越先发射……</p>
+<h1 id="手动实现一个栈"><a href="#手动实现一个栈" class="headerlink" title="手动实现一个栈"></a>手动实现一个栈</h1><p>首先，创建一个类来表示栈</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function Stack () &#123; &#125;</span><br></pre></td></tr></table></figure>
+<p>我们需要选择一种数据结构来保存栈里的元素，可以选择数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function Stack()&#123;</span><br><span class="line">    var items = [];     //用来保存栈里的元素</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来，为栈添加一些方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">push(element(s));   //添加新元素到栈顶</span><br><span class="line">pop();              //移除栈顶的元素，同时返回被移除的元素</span><br><span class="line">peek();             //返回栈顶的元素，不对栈做任何修改</span><br><span class="line">isEmpty();          //如果栈里没有任何元素就返回true，否则false</span><br><span class="line">clear();            //移除栈里的所有元素</span><br><span class="line">size();             //返回栈里的元素个数,类似于数组的length属性</span><br></pre></td></tr></table></figure>
+<p>我们需要实现的第一个方法时<code>push</code>。用来往栈里添加新元素，有一点很重要：该方法只添加到栈顶，也就是栈的末尾。所以，可以这样写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.push = function (element) &#123;</span><br><span class="line">    items.push(element);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>利用数组的 push 方法，就可以实现在栈顶末尾添加新的元素了。</p>
+<p>接着，来实现<code>pop</code>方法，用来实现移除栈里的元素。栈遵从 LIFO（后进先出）原则。移出去的是最后添加进去的元素。因此，可以使用数组的 pop 方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.pop = function () &#123;</span><br><span class="line">    return items.pop();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样一来，这个栈自然就遵从了 LIFO 原则</p>
 <p>现在，再来为这个栈添额外的辅助方法。</p>
-<p>如果想知道栈里最后添加的元素是什么，可以用<code>peek</code>方法。这个方法将返回栈顶的元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.peek = function () &#123;</span><br><span class="line">    return items[items.length-1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果想知道栈里最后添加的元素是什么，可以用<code>peek</code>方法。这个方法将返回栈顶的元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.peek = function () &#123;</span><br><span class="line">    return items[items.length-1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>因为类内部是用数组保存元素的，所以这里访问数组最后一个元素用<code>length-1</code></p>
-<p>下一个要实现的方法是<code>isEmpty</code>,如果栈为空的话，就返回true，否则返回false：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.isEmpty = function () &#123;</span><br><span class="line">    return items.length == 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>使用isEmpty方法，就能简单地判断栈内部是否为空。</p>
-<p>类似于数组地length属性，我们也可以实现栈地length。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.size = function () &#123;</span><br><span class="line">    return items.length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>因为栈地内部使用数组保存元素，所以数组地length就是栈的长度。</p>
-<p>实现<code>clear</code>方法，clear方法用来清空栈中所有的元素。最简单的实现方法是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.clear = function () &#123;</span><br><span class="line">    items = [];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>其实多次调用pop方法也可以，但是没有这个方法来的简单快捷。</p>
-<p>最后，为了检查栈里的内容，还需要实现一个辅助方法：<code>print</code>。它会把栈里的元素都输出到控制台：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.print = function () &#123;</span><br><span class="line">    console.log(items.toString());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>下一个要实现的方法是<code>isEmpty</code>,如果栈为空的话，就返回 true，否则返回 false：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.isEmpty = function () &#123;</span><br><span class="line">    return items.length == 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用 isEmpty 方法，就能简单地判断栈内部是否为空。</p>
+<p>类似于数组地 length 属性，我们也可以实现栈地 length。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.size = function () &#123;</span><br><span class="line">    return items.length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因为栈地内部使用数组保存元素，所以数组地 length 就是栈的长度。</p>
+<p>实现<code>clear</code>方法，clear 方法用来清空栈中所有的元素。最简单的实现方法是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.clear = function () &#123;</span><br><span class="line">    items = [];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其实多次调用 pop 方法也可以，但是没有这个方法来的简单快捷。</p>
+<p>最后，为了检查栈里的内容，还需要实现一个辅助方法：<code>print</code>。它会把栈里的元素都输出到控制台：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.print = function () &#123;</span><br><span class="line">    console.log(items.toString());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>至此，我们就完整地创建了一个<strong>栈</strong>!</p>
 <h1 id="栈的完整代码"><a href="#栈的完整代码" class="headerlink" title="栈的完整代码"></a>栈的完整代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">function Stack()&#123;</span><br><span class="line"></span><br><span class="line">    var items = [];     //用来保存栈里的元素</span><br><span class="line"></span><br><span class="line">    this.push = function (element) &#123;</span><br><span class="line">        items.push(element);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    this.pop = function () &#123;</span><br><span class="line">        return items.pop();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    this.peek = function () &#123;</span><br><span class="line">        return items[items.length-1];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    this.isEmpty = function () &#123;</span><br><span class="line">        return items.length == 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    this.size = function () &#123;</span><br><span class="line">        return items.length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    this.clear = function () &#123;</span><br><span class="line">        items = [];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    this.print = function () &#123;</span><br><span class="line">        console.log(items.toString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="使用Stack类"><a href="#使用Stack类" class="headerlink" title="使用Stack类"></a>使用Stack类</h1><p>栈已经创建好了，我们来测试一下</p>
-<p>首先，来初始化Stack类。然后，验证一下栈是否为空<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var stack = new Stack();</span><br><span class="line">console.log(stack.isEmpty());         //控制台输出true</span><br></pre></td></tr></table></figure></p>
-<p>接下来，往栈里面添加一下元素：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">stack.push(5);</span><br><span class="line">stack.push(8);</span><br></pre></td></tr></table></figure></p>
-<p>如果调用peek方法，很显然将会输出8，因为它是栈顶的元素：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(stack.peek());            //控制台输出8</span><br></pre></td></tr></table></figure></p>
-<p>再添加一个元素：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">stack.push(11);</span><br><span class="line">console.log(stack.size());            //控制台输出3</span><br></pre></td></tr></table></figure></p>
-<p>我们往栈里又添加了11。如果调用size方法，输出为3，因为栈里有三个元素（5，8和11）。如果这时候调用isEmpty方法，会看到输出了false（因为此时栈不为空）。最后，再来往里面添加一个元素：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stack.push(15);</span><br></pre></td></tr></table></figure></p>
-<p>然后，调用两次pop方法从栈里移除两个元素：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">stack.pop();</span><br><span class="line">stack.pop();</span><br><span class="line">console.log(stack.size());            //控制台输出2</span><br><span class="line">stack.print();                        //控制台输出[5,8]</span><br></pre></td></tr></table></figure></p>
+<h1 id="使用-Stack-类"><a href="#使用-Stack-类" class="headerlink" title="使用 Stack 类"></a>使用 Stack 类</h1><p>栈已经创建好了，我们来测试一下</p>
+<p>首先，来初始化 Stack 类。然后，验证一下栈是否为空</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var stack = new Stack();</span><br><span class="line">console.log(stack.isEmpty());         //控制台输出true</span><br></pre></td></tr></table></figure>
+<p>接下来，往栈里面添加一下元素：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">stack.push(5);</span><br><span class="line">stack.push(8);</span><br></pre></td></tr></table></figure>
+<p>如果调用 peek 方法，很显然将会输出 8，因为它是栈顶的元素：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(stack.peek());            //控制台输出8</span><br></pre></td></tr></table></figure>
+<p>再添加一个元素：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">stack.push(11);</span><br><span class="line">console.log(stack.size());            //控制台输出3</span><br></pre></td></tr></table></figure>
+<p>我们往栈里又添加了 11。如果调用 size 方法，输出为 3，因为栈里有三个元素（5，8 和 11）。如果这时候调用 isEmpty 方法，会看到输出了 false（因为此时栈不为空）。最后，再来往里面添加一个元素：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stack.push(15);</span><br></pre></td></tr></table></figure>
+<p>然后，调用两次 pop 方法从栈里移除两个元素：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">stack.pop();</span><br><span class="line">stack.pop();</span><br><span class="line">console.log(stack.size());            //控制台输出2</span><br><span class="line">stack.print();                        //控制台输出[5,8]</span><br></pre></td></tr></table></figure>
 <p>到这里，整个栈的功能测试完成。</p>
 <h1 id="用栈来解决问题"><a href="#用栈来解决问题" class="headerlink" title="用栈来解决问题"></a>用栈来解决问题</h1><p>使用栈来完成进制转换。</p>
-<p>现实生活中，我们主要用10进制，但在计算科学中，二进制非常重要，因为计算机里所有的内容都是用二进制数字0和1来表示的。大学的计算机课都会先教进制转换。以二进制为例：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/6/15/1640144af65f774e?w=661&amp;h=272&amp;f=png&amp;s=19200" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function divideBy2 (decNumber) &#123;</span><br><span class="line"></span><br><span class="line">    var remStack = new Stack(),</span><br><span class="line">    rem,</span><br><span class="line">    binaryString = &apos;&apos;;</span><br><span class="line"></span><br><span class="line">    while (decNumber&gt;0) &#123;  //&#123;1&#125;</span><br><span class="line">        rem = Math.floor(decNumber % 2);  //&#123;2&#125;</span><br><span class="line">        remStack.push(rem);  //&#123;3&#125;</span><br><span class="line">        decNumber = Math.floor(decNumber / 2);  //&#123;4&#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    while (!remStack.isEmpty()) &#123;  //&#123;5&#125;</span><br><span class="line">        binaryString += remStack.pop().toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return binaryString;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这段代码里，当结果满足和2做整除的条件时，（行{1}），我们会获得当前结果和2的余数，放到栈里（行{2}、{3}）。然后让结果和2做整除（行{4}）</p>
+<p>现实生活中，我们主要用 10 进制，但在计算科学中，二进制非常重要，因为计算机里所有的内容都是用二进制数字 0 和 1 来表示的。大学的计算机课都会先教进制转换。以二进制为例：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/15/1640144af65f774e?w=661&amp;h=272&amp;f=png&amp;s=19200" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function divideBy2 (decNumber) &#123;</span><br><span class="line"></span><br><span class="line">    var remStack = new Stack(),</span><br><span class="line">    rem,</span><br><span class="line">    binaryString = &apos;&apos;;</span><br><span class="line"></span><br><span class="line">    while (decNumber&gt;0) &#123;  //&#123;1&#125;</span><br><span class="line">        rem = Math.floor(decNumber % 2);  //&#123;2&#125;</span><br><span class="line">        remStack.push(rem);  //&#123;3&#125;</span><br><span class="line">        decNumber = Math.floor(decNumber / 2);  //&#123;4&#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    while (!remStack.isEmpty()) &#123;  //&#123;5&#125;</span><br><span class="line">        binaryString += remStack.pop().toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return binaryString;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码里，当结果满足和 2 做整除的条件时，（行{1}），我们会获得当前结果和 2 的余数，放到栈里（行{2}、{3}）。然后让结果和 2 做整除（行{4}）</p>
 <blockquote>
-<p>注：JavaScript有数字类型，但是它不会区分时整数还是浮点数。因此，要使用Math.floor函数让除法的操作仅返回整数部分。</p>
+<p>注：JavaScript 有数字类型，但是它不会区分时整数还是浮点数。因此，要使用 Math.floor 函数让除法的操作仅返回整数部分。</p>
 </blockquote>
-<p>最后，用pop方法把栈中的元素都移除，把出栈的元素连接成字符串（行{5}）。</p>
-<p>测试一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(divideBy2(520));      //输出1000001000</span><br><span class="line">console.log(divideBy2(10));       //输出1010</span><br><span class="line">console.log(divideBy2(1000));     //输出1111101000</span><br></pre></td></tr></table></figure></p>
-<p>接下来，可以很容易的修改上面的算法，使它能够把十进制转化为任何进制。除了让十进制数字和2整除转成二进制数，还可以传入其他任意进制的基数作为参数，就像下面的算法这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function baseConverter (decNumber, base) &#123;</span><br><span class="line"></span><br><span class="line">    var remStack = new Stack(),</span><br><span class="line">    rem,</span><br><span class="line">    baseString = &apos;&apos;;</span><br><span class="line">    digits = &apos;0123456789ABCDEF&apos;;     //&#123;6&#125;</span><br><span class="line"></span><br><span class="line">    while (decNumber&gt;0) &#123;  </span><br><span class="line">        rem = Math.floor(decNumber % base);</span><br><span class="line">        remStack.push(rem);  //&#123;3&#125;</span><br><span class="line">        decNumber = Math.floor(decNumber / base);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    while (!remStack.isEmpty()) &#123;</span><br><span class="line">        baseString += digits[remStack.pop()];  //&#123;7&#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return baseString;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>在将十进制转成二进制时，余数是0或1；在将十进制转成八进制时，余数时0-8之间的数；但是将十进制转成十六进制时，余数时0-9之间的数字加上A、B、C、D、E、F（对应10、11、12、13、14和15）。因此，需要对栈中的数字做个转化才可以（行{6}、{7}）。</p>
-<p>来测试一下输出结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(baseConverter(1231,2));      //输出10011001111</span><br><span class="line">console.log(baseConverter(1231,8));      //输出2317</span><br><span class="line">console.log(baseConverter(1231,16));     //输出4CF</span><br></pre></td></tr></table></figure></p>
+<p>最后，用 pop 方法把栈中的元素都移除，把出栈的元素连接成字符串（行{5}）。</p>
+<p>测试一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(divideBy2(520));      //输出1000001000</span><br><span class="line">console.log(divideBy2(10));       //输出1010</span><br><span class="line">console.log(divideBy2(1000));     //输出1111101000</span><br></pre></td></tr></table></figure>
+<p>接下来，可以很容易的修改上面的算法，使它能够把十进制转化为任何进制。除了让十进制数字和 2 整除转成二进制数，还可以传入其他任意进制的基数作为参数，就像下面的算法这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function baseConverter (decNumber, base) &#123;</span><br><span class="line"></span><br><span class="line">    var remStack = new Stack(),</span><br><span class="line">    rem,</span><br><span class="line">    baseString = &apos;&apos;;</span><br><span class="line">    digits = &apos;0123456789ABCDEF&apos;;     //&#123;6&#125;</span><br><span class="line"></span><br><span class="line">    while (decNumber&gt;0) &#123;</span><br><span class="line">        rem = Math.floor(decNumber % base);</span><br><span class="line">        remStack.push(rem);  //&#123;3&#125;</span><br><span class="line">        decNumber = Math.floor(decNumber / base);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    while (!remStack.isEmpty()) &#123;</span><br><span class="line">        baseString += digits[remStack.pop()];  //&#123;7&#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return baseString;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在将十进制转成二进制时，余数是 0 或 1；在将十进制转成八进制时，余数时 0-8 之间的数；但是将十进制转成十六进制时，余数时 0-9 之间的数字加上 A、B、C、D、E、F（对应 10、11、12、13、14 和 15）。因此，需要对栈中的数字做个转化才可以（行{6}、{7}）。</p>
+<p>来测试一下输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(baseConverter(1231,2));      //输出10011001111</span><br><span class="line">console.log(baseConverter(1231,8));      //输出2317</span><br><span class="line">console.log(baseConverter(1231,16));     //输出4CF</span><br></pre></td></tr></table></figure>
 <p>显然是正确的。</p>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>这里用js代码自己实现了栈。并且通过进制转换的例子来实际应用了它。栈的应用实例还有很多，比如<a href="https://blog.csdn.net/qq_21058391/article/details/78150617" target="_blank" rel="noopener">平衡圆括号</a>和<a href="https://baike.baidu.com/item/%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/1945186" target="_blank" rel="noopener">汉诺塔</a>。感兴趣可以自行百度去了解</p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>这里用 js 的数组实现了栈。并且通过进制转换的例子来实际应用了它，重点在于理解什么是栈以及栈的原理和应用场景。</p>
 
       
 
@@ -348,7 +369,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是栈（Stack）"><span class="toc-number">1.</span> <span class="toc-text">什么是栈（Stack）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#现实中的例子"><span class="toc-number">2.</span> <span class="toc-text">现实中的例子</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#手动实现一个栈"><span class="toc-number">3.</span> <span class="toc-text">手动实现一个栈</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#栈的完整代码"><span class="toc-number">4.</span> <span class="toc-text">栈的完整代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用Stack类"><span class="toc-number">5.</span> <span class="toc-text">使用Stack类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#用栈来解决问题"><span class="toc-number">6.</span> <span class="toc-text">用栈来解决问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#小结"><span class="toc-number">7.</span> <span class="toc-text">小结</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是栈（Stack）"><span class="toc-number">1.</span> <span class="toc-text">什么是栈（Stack）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#现实中的例子"><span class="toc-number">2.</span> <span class="toc-text">现实中的例子</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#手动实现一个栈"><span class="toc-number">3.</span> <span class="toc-text">手动实现一个栈</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#栈的完整代码"><span class="toc-number">4.</span> <span class="toc-text">栈的完整代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用-Stack-类"><span class="toc-number">5.</span> <span class="toc-text">使用 Stack 类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#用栈来解决问题"><span class="toc-number">6.</span> <span class="toc-text">用栈来解决问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#小结"><span class="toc-number">7.</span> <span class="toc-text">小结</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -466,19 +487,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Cordova</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">转载</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">GIT笔记</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -490,11 +507,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">碎碎念</a>
+                <a href="javascript:void(0)" class="js-tag color1">GIT笔记</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">跨域解决方案</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">碎碎念</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -510,11 +531,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">面试心得</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color1">vue组件</a>
               </li>
              
               <li class="article-tag-list-item">
