@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="行无忌的成长小屋">
 <meta property="og:description" content="沉浸式状态栏为了实现沉浸式状态栏，在状态栏 StatusBar 插件 cordova-plugin-statusbar 2.4.2 &amp;quot;StatusBar&amp;quot;中做了些修改  目前蓝湖 app 采用沉浸式  状态栏方案，类似淘宝 app 的状态栏效果，任务栏半透明覆盖在 app 内容上  该插件本身不支持设置为沉浸式任务栏效果，所以对插件相关代码做了修改">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-23T02:21:09.875Z">
+<meta property="og:updated_time" content="2019-01-23T02:24:34.885Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cordova项目在Android下App细节打理">
 <meta name="twitter:description" content="沉浸式状态栏为了实现沉浸式状态栏，在状态栏 StatusBar 插件 cordova-plugin-statusbar 2.4.2 &amp;quot;StatusBar&amp;quot;中做了些修改  目前蓝湖 app 采用沉浸式  状态栏方案，类似淘宝 app 的状态栏效果，任务栏半透明覆盖在 app 内容上  该插件本身不支持设置为沉浸式任务栏效果，所以对插件相关代码做了修改">
@@ -91,7 +91,7 @@
 	</header>
 </div>
 <div style="margin-left:30px; margin-top:250px">
-	<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="240" height="52" src="//music.163.com/outchain/player?type=2&id=536175763&auto=0&height=32"></iframe>
+	<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="240" height="52" src="//music.163.com/outchain/player?type=2&id=495819618&auto=1&height=20"></iframe>
 </div>
     </div>
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
@@ -225,17 +225,17 @@
 <pre><code>setContentView(appView.getView());
 AndroidBug5497LanhuDebugger.assistActivity(this);
 </code></pre><h2 id="全屏启动页"><a href="#全屏启动页" class="headerlink" title="全屏启动页"></a>全屏启动页</h2><p>找到项目 app/src/main 目录下的 AndroidManifest.xml 文件，在 mainactivity 中修改配置属性：</p>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:theme=&quot;@style/AppTheme&quot;</span><br></pre></td></tr></table></figure>
-</code></pre><p>添加配置主题</p>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;resources xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;</span><br><span class="line">    &lt;style name=&quot;AppTheme&quot; parent=&quot;@android:style/Theme.NoTitleBar&quot;&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowLayoutInDisplayCutoutMode&quot;&gt;shortEdges&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:navigationBarColor&quot;&gt;@android:color/transparent&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:statusBarColor&quot;&gt;@android:color/transparent&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowFullscreen&quot;&gt;true&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowIsTranslucent&quot;&gt;false&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowDisablePreview&quot;&gt;false&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowContentOverlay&quot;&gt;@null&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowBackground&quot;&gt;@drawable/screen&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:background&quot;&gt;@null&lt;/item&gt;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/resources&gt;</span><br></pre></td></tr></table></figure>
-</code></pre><h2 id="结合自定义主题兼容安卓-8-0-9-0-刘海屏、全面屏"><a href="#结合自定义主题兼容安卓-8-0-9-0-刘海屏、全面屏" class="headerlink" title="结合自定义主题兼容安卓 8.0 9.0 刘海屏、全面屏"></a>结合自定义主题兼容安卓 8.0 9.0 刘海屏、全面屏</h2><p>在 AndroidManifest.xml 文件的 application 选项中添加配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:theme=&quot;@style/AppTheme&quot;</span><br></pre></td></tr></table></figure>
+<p>添加配置主题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;resources xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;</span><br><span class="line">    &lt;style name=&quot;AppTheme&quot; parent=&quot;@android:style/Theme.NoTitleBar&quot;&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowLayoutInDisplayCutoutMode&quot;&gt;shortEdges&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:navigationBarColor&quot;&gt;@android:color/transparent&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:statusBarColor&quot;&gt;@android:color/transparent&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowFullscreen&quot;&gt;true&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowIsTranslucent&quot;&gt;false&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowDisablePreview&quot;&gt;false&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowContentOverlay&quot;&gt;@null&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowBackground&quot;&gt;@drawable/screen&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:background&quot;&gt;@null&lt;/item&gt;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/resources&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="结合自定义主题兼容安卓-8-0-9-0-刘海屏、全面屏"><a href="#结合自定义主题兼容安卓-8-0-9-0-刘海屏、全面屏" class="headerlink" title="结合自定义主题兼容安卓 8.0 9.0 刘海屏、全面屏"></a>结合自定义主题兼容安卓 8.0 9.0 刘海屏、全面屏</h2><p>在 AndroidManifest.xml 文件的 application 选项中添加配置：</p>
 <pre><code>&lt;meta-data android:name=&quot;android.max_aspect&quot; android:value=&quot;2.4&quot; /&gt;
 &lt;meta-data android:name=&quot;android.notch_support&quot; android:value=&quot;true&quot; /&gt;
 &lt;meta-data android:name=&quot;notch.config&quot; android:value=&quot;portrait|landscape&quot; /&gt;
 &lt;meta-data android:name=&quot;android.max_aspect&quot; android:value=&quot;ratio_float&quot; /&gt;
 </code></pre><h2 id="解决系统字体缩放对-app-界面的影响"><a href="#解决系统字体缩放对-app-界面的影响" class="headerlink" title="解决系统字体缩放对 app 界面的影响"></a>解决系统字体缩放对 app 界面的影响</h2><p>由于 app 在 webview 中运行，手机系统设置  改变字体大小会对 app 的样式造成影响 ，需要在找到 <code>CordovaLib\java\org.apache.cordova\engine\SystemWebViewEngine.java</code> 文件，在里面可以对 webView 进行修改： 在<code>initWebViewSettings</code>方法中加入设置代码：<code>settings.setTextZoom(100);</code>,即可消除系统字体大小的影响</p>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">settings.setJavaScriptEnabled(true);</span><br><span class="line">settings.setJavaScriptCanOpenWindowsAutomatically(true);</span><br><span class="line">settings.setLayoutAlgorithm(LayoutAlgorithm.NORMAL);</span><br><span class="line">settings.setTextZoom(100);</span><br></pre></td></tr></table></figure>
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">settings.setJavaScriptEnabled(true);</span><br><span class="line">settings.setJavaScriptCanOpenWindowsAutomatically(true);</span><br><span class="line">settings.setLayoutAlgorithm(LayoutAlgorithm.NORMAL);</span><br><span class="line">settings.setTextZoom(100);</span><br></pre></td></tr></table></figure>
+
       
 
       
@@ -501,11 +501,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">数据结构算法</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color2">数据结构算法</a>
               </li>
              
               <li class="article-tag-list-item">
