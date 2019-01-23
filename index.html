@@ -173,67 +173,12 @@
 <ol>
 <li>目前蓝湖 app 采用沉浸式  状态栏方案，类似淘宝 app 的状态栏效果，任务栏半透明覆盖在 app 内容上</li>
 </ol>
-<p>该插件本身不支持设置为沉浸式任务栏效果，所以对插件相关代码做了修改</p>
-<p>将原来的 StatusBar.java 中的 run 方法</p>
-<pre><code>public void run() {
-    // Clear flag FLAG_FORCE_NOT_FULLSCREEN which is set initially
-    // by the Cordova.
-    Window window = cordova.getActivity().getWindow();
-    Window window = cordova.getActivity().getWindow();
-    window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-    window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-    window.setStatusBarColor(Color.TRANSPARENT);
-    window.setNavigationBarColor(Color.TRANSPARENT);
-    window.clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-
-    // Read &apos;StatusBarBackgroundColor&apos; from config.xml, default is #000000.
-    // setStatusBarBackgroundColor(preferences.getString(&quot;StatusBarBackgroundColor&quot;, &quot;#000000&quot;));
-
-    // Read &apos;StatusBarStyle&apos; from config.xml, default is &apos;lightcontent&apos;.
-    // setStatusBarStyle(preferences.getString(&quot;StatusBarStyle&quot;, &quot;lightcontent&quot;));
-}
-</code></pre><p>改为</p>
-<pre><code>public void run() {
-    // Clear flag FLAG_FORCE_NOT_FULLSCREEN which is set initially
-    // by the Cordova.
-    Window window = cordova.getActivity().getWindow();
-    window.clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-    if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) {
-    window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-    }
-    if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP) {
-    window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-    window.setStatusBarColor(Color.TRANSPARENT);
-    }
-}
-</code></pre><ol start="2">
-<li>设置为全屏后遇到的新问题，这是 android 平台上一个历史久远的 bug, 代号 5497，并且 google 执意不予解决, 在 Stack Overflow 社区被称之为 AndroidBug5497Workaround.</li>
-</ol>
-<blockquote>
-<p>AndroidBug5497Workaround： android 平台的 Webview 在全屏下的呼出软键盘无法触发布局重计算</p>
-</blockquote>
-<p>这个问题会导致有  位于底部的输入框  获取到焦点后，弹出的软键盘遮挡输入框</p>
-<p>为了解决这个问题，在项目的 CordovaLib 目录下引入了 AndroidBug5497LanhuDebugger.java 文件， 然后在 CordovaActivity.java 文件中的 <code>setContentView(appView.getView());</code> 方法执行后，调用  该类的方法</p>
-<pre><code>setContentView(appView.getView());
-AndroidBug5497LanhuDebugger.assistActivity(this);
-</code></pre><h2 id="全屏启动页"><a href="#全屏启动页" class="headerlink" title="全屏启动页"></a>全屏启动页</h2><p>找到项目 app/src/main 目录下的 AndroidManifest.xml 文件，在 mainactivity 中修改配置属性：</p>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:theme=&quot;@style/AppTheme&quot;</span><br></pre></td></tr></table></figure>
-</code></pre><p>添加配置主题</p>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;resources xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;</span><br><span class="line">    &lt;style name=&quot;AppTheme&quot; parent=&quot;@android:style/Theme.NoTitleBar&quot;&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowLayoutInDisplayCutoutMode&quot;&gt;shortEdges&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:navigationBarColor&quot;&gt;@android:color/transparent&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:statusBarColor&quot;&gt;@android:color/transparent&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowFullscreen&quot;&gt;true&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowIsTranslucent&quot;&gt;false&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowDisablePreview&quot;&gt;false&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowContentOverlay&quot;&gt;@null&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowBackground&quot;&gt;@drawable/screen&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:background&quot;&gt;@null&lt;/item&gt;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/resources&gt;</span><br></pre></td></tr></table></figure>
-</code></pre><h2 id="结合自定义主题兼容安卓-8-0-9-0-刘海屏、全面屏"><a href="#结合自定义主题兼容安卓-8-0-9-0-刘海屏、全面屏" class="headerlink" title="结合自定义主题兼容安卓 8.0 9.0 刘海屏、全面屏"></a>结合自定义主题兼容安卓 8.0 9.0 刘海屏、全面屏</h2><p>在 AndroidManifest.xml 文件的 application 选项中添加配置：</p>
-<pre><code>&lt;meta-data android:name=&quot;android.max_aspect&quot; android:value=&quot;2.4&quot; /&gt;
-&lt;meta-data android:name=&quot;android.notch_support&quot; android:value=&quot;true&quot; /&gt;
-&lt;meta-data android:name=&quot;notch.config&quot; android:value=&quot;portrait|landscape&quot; /&gt;
-&lt;meta-data android:name=&quot;android.max_aspect&quot; android:value=&quot;ratio_float&quot; /&gt;
-</code></pre><h2 id="解决系统字体缩放对-app-界面的影响"><a href="#解决系统字体缩放对-app-界面的影响" class="headerlink" title="解决系统字体缩放对 app 界面的影响"></a>解决系统字体缩放对 app 界面的影响</h2><p>由于 app 在 webview 中运行，手机系统设置  改变字体大小会对 app 的样式造成影响 ，需要在找到 <code>CordovaLib\java\org.apache.cordova\engine\SystemWebViewEngine.java</code> 文件，在里面可以对 webView 进行修改： 在<code>initWebViewSettings</code>方法中加入设置代码：<code>settings.setTextZoom(100);</code>,即可消除系统字体大小的影响</p>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">settings.setJavaScriptEnabled(true);</span><br><span class="line">settings.setJavaScriptCanOpenWindowsAutomatically(true);</span><br><span class="line">settings.setLayoutAlgorithm(LayoutAlgorithm.NORMAL);</span><br><span class="line">settings.setTextZoom(100);</span><br></pre></td></tr></table></figure>
-</code></pre>
+<p>该插件本身不支持设置为沉浸式任务栏效果，所以对插件相关代码做了修改<br>
+        
       
 
       
-    </div>
+    </p></div>
     <div class="article-info article-info-index">
       
       
@@ -305,25 +250,12 @@ AndroidBug5497LanhuDebugger.assistActivity(this);
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="微信分享插件"><a href="#微信分享插件" class="headerlink" title="微信分享插件"></a>微信分享插件</h2><p>在app中有一个页面需要调用微信分享，纯web端微信分享的接口已经被封了，只能通过app原生去调用微信做分享了，于是就找了几款微信分享的插件，最终确定了使用 <code>cordova-plugin-wechat 2.0.0 &quot;Wechat</code> 插件来完成将相应内容分享至朋友圈和联系人列表的功能</p>
-<p>由于 Cordova 6.0 升级到 Cordova 7.0 后项目目录结构发生了变化，7.0 以后的 cordova 项目 andorid 平台下目录结构与标准 android 项目包目录结构保持一致，但是微信分享的插件使用的为 2.0 的版本，比较老旧，需要手动修改相关代码中的配置路径</p>
-<p>将 targetDir 变量的赋值方法 path.join()</p>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var targetDir  = path.join(projectRoot, &quot;platforms&quot;, &quot;android&quot;, &quot;src&quot;, packageName.replace(/\./g, path.sep), &quot;wxapi&quot;);</span><br><span class="line">targetFiles = [&quot;EntryActivity.java&quot;, &quot;WXEntryActivity.java&quot;, &quot;WXPayEntryActivity.java&quot;];</span><br></pre></td></tr></table></figure>
-</code></pre><p>改为</p>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var targetDir  = path.join(projectRoot, &quot;platforms&quot;, &quot;android&quot;, &quot;app&quot;,&quot;src&quot;,&quot;main&quot;,&quot;java&quot;, packageName.replace(/\./g, path.sep), &quot;wxapi&quot;);</span><br><span class="line">targetFiles = [&quot;EntryActivity.java&quot;, &quot;WXEntryActivity.java&quot;, &quot;WXPayEntryActivity.java&quot;];</span><br></pre></td></tr></table></figure>
-</code></pre><h2 id="QQ分享插件"><a href="#QQ分享插件" class="headerlink" title="QQ分享插件"></a>QQ分享插件</h2><p>QQ分享用了<code>cordova-plugin-qqsdk 0.9.7 &quot;QQSDK&quot;</code>，用样式非常老旧的插件了，几年未曾更新。</p>
-<ol>
-<li><p>如果是在已经添加 android 平台的情况下安装的 QQ 分享插件 则存在 SDK 路径错误的问题，需要把 libs 目录向外提一级,应保持目录结构如下图</p>
-<p> <img src="./QQshare.png"></p>
-</li>
-<li><p>本地 QQ 分享插件中有一项强制竖屏的配置已经被移除，如果重新安装该插件，则需要手动搜索 portrait 相关配置将下图中划红线的配置删除，否则在 Android 8.0 平台调用 QQ 分享会导致应用崩溃</p>
-<p> <img src="./QQplugin.png"></p>
-</li>
-</ol>
-
+<p>由于 Cordova 6.0 升级到 Cordova 7.0 后项目目录结构发生了变化，7.0 以后的 cordova 项目 andorid 平台下目录结构与标准 android 项目包目录结构保持一致，但是微信分享的插件使用的为 2.0 的版本，比较老旧，需要手动修改相关代码中的配置路径<br>
+        
       
 
       
-    </div>
+    </p></div>
     <div class="article-info article-info-index">
       
       
@@ -630,57 +562,12 @@ AndroidBug5497LanhuDebugger.assistActivity(this);
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="数组都有哪些方法？"><a href="#数组都有哪些方法？" class="headerlink" title="数组都有哪些方法？"></a>数组都有哪些方法？</h2><p>数组的方法非常多, 可以前往MDN查看具体内容  <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank" rel="noopener">MDN引路大法Array</a></p>
-<h2 id="数组的方法中，有哪些是对原数组有影响的？"><a href="#数组的方法中，有哪些是对原数组有影响的？" class="headerlink" title="数组的方法中，有哪些是对原数组有影响的？"></a>数组的方法中，有哪些是对原数组有影响的？</h2><p>其实也就是会使原数组发生改变的方法，也称为<strong>变异方法</strong><br>常用的变异方法:push pop shift unshift<br>有几个不容易被想到: reverse sort splice<br>除了以上7种方法，其他的方法都对原数组没有影响，要么返回新数组，要么返回布尔类型或者数值等</p>
-<h2 id="如何将字符串转换为数组，数组转为字符串？"><a href="#如何将字符串转换为数组，数组转为字符串？" class="headerlink" title="如何将字符串转换为数组，数组转为字符串？"></a>如何将字符串转换为数组，数组转为字符串？</h2><p>字符串转数组：str.split(separator,limit);  参数1指定字符串或正则，参照2指定数组的最大长度</p>
-<pre><code>var str = &apos;array&apos;
-var arr = str.split(&apos;&apos;)
-console.log(arr)   //[ &apos;a&apos;, &apos;r&apos;, &apos;r&apos;, &apos;a&apos;, &apos;y&apos; ]
-</code></pre><p>数组转字符串：使用字符串的join()方法</p>
-<pre><code>var arr = [ &apos;a&apos;, &apos;r&apos;, &apos;r&apos;, &apos;a&apos;, &apos;y&apos; ]
-var newStr = arr.join(&apos;&apos;)
-console.log(newStr)  //array
-</code></pre><h2 id="一个数组如何实现去重？"><a href="#一个数组如何实现去重？" class="headerlink" title="一个数组如何实现去重？"></a>一个数组如何实现去重？</h2><p>数组去重大概可以分成四大类：<br>方法一：</p>
-<p>创建一个空数组，然后使用循环push的方式，一个一个将原数组push进去，每次push之前通过indexOf判断是否重复，如果新数组里没有，就push进去，没有就下一个</p>
-<p>方法二：</p>
-<p>直接在原数组上进行去重操作，利用splice方法，从原数组开始，依此对元素进行对比，如果发现重复项，则删除，注意删除后对数组长度进行-1</p>
-<p>方法三：</p>
-<p>使用对象属性不能相同的特点进行去重，我们可以先创建一个对象，然后把数组依此存入</p>
-<p>方法四：</p>
-<p>对原先数组进行排序，排序后进行遍历，如果相邻元素相同，则删除掉相邻元素</p>
-<h2 id="能否写一行代码进行数组去重？"><a href="#能否写一行代码进行数组去重？" class="headerlink" title="能否写一行代码进行数组去重？"></a>能否写一行代码进行数组去重？</h2><p>最短的数组去重：</p>
-<p>利用es6新特性：<br>    […new Set(arr)]</p>
-<h2 id="es5中最简单的数组去重？"><a href="#es5中最简单的数组去重？" class="headerlink" title="es5中最简单的数组去重？"></a>es5中最简单的数组去重？</h2><pre><code>[1,&apos;a&apos;,3,3,2,&apos;a&apos;,2].filter(function (item, index, arr) {
-    return index === arr.indexOf(item)
-})      //[1, &apos;a&apos;, 3, 2]
-</code></pre><h2 id="有哪些是伪数组？"><a href="#有哪些是伪数组？" class="headerlink" title="有哪些是伪数组？"></a>有哪些是伪数组？</h2><p>其实在JavaScript中，经常与伪数组打交道，最常见的三个伪数组：</p>
-<ul>
-<li>dom选择器返回的节点列表(getElementById除外)</li>
-<li>arguments对象</li>
-<li>jQuery选择器返回的对象</li>
-</ul>
-<h2 id="何如将伪数组转换为数组？"><a href="#何如将伪数组转换为数组？" class="headerlink" title="何如将伪数组转换为数组？"></a>何如将伪数组转换为数组？</h2><p>简单方法：</p>
-<p>创建一个空数组，然后将伪数组中的每一项依此压入新数组</p>
-<p>更简单一点？</p>
-<p>使用Array.prototype.slice.call(arguments)</p>
-<p>slice方法可以返回一个新的数组对象，可以对伪数组进行浅拷贝而不对其造成影响</p>
-<p>再简单一点？</p>
-<p>[].slice.call(arguments)</p>
-<p>这三种方法实现原理都是一样的，性能上无差异，只是后两种写法更加精简</p>
-<p>还有没有别的方法？</p>
-<p>使用Array.from()方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function f() &#123;</span><br><span class="line">    return Array.from(arguments);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f(1, 2, 3);</span><br><span class="line"></span><br><span class="line">// [1, 2, 3]</span><br></pre></td></tr></table></figure>
-<h2 id="访问数组元素需要注意的事"><a href="#访问数组元素需要注意的事" class="headerlink" title="访问数组元素需要注意的事"></a>访问数组元素需要注意的事</h2><p>数组的元素可以看作是数组对象的属性，但是却不能使用下列的写法来访问数组的元素，否则会抛出错误</p>
-<pre><code>console.log(arr.0); // a syntax error
-</code></pre><p>并不是 JavaScript 数组有什么特殊之处，而是因为在 JavaScript 中，以数字开头的属性不能用点号引用，必须用方括号。比如，如果一个对象有一个名为 3d 的属性，那么只能用方括号来引用它。下面是具体的例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var years = [2018, 2019];</span><br><span class="line">console.log(years.0);   // 语法错误</span><br><span class="line">console.log(years[0]);  // √</span><br></pre></td></tr></table></figure>
-<p>我们可以将数组的索引用引号引起来，比如 years[2] 可以写成 years[‘2’]。 years[2] 中的 2 会被 JavaScript 解释器通过调用 toString 隐式转换成字符串。正因为这样，’2’ 和 ‘02’ 在 years 中所引用的可能是不同位置上的元素。而下面这个例子也可能会打印 true：</p>
-<pre><code>console.log(years[&apos;2&apos;] != years[&apos;02&apos;]);
-</code></pre><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>JavaScript的数组是一种类列表对象，它的原型中提供了遍历和修改元素的相关操作，在日常开发中使用频度的非常高的，重要性不必多说，在此以自问自答的方式记录下来，补补之前欠下的笔记。</p>
-
+<h2 id="数组的方法中，有哪些是对原数组有影响的？"><a href="#数组的方法中，有哪些是对原数组有影响的？" class="headerlink" title="数组的方法中，有哪些是对原数组有影响的？"></a>数组的方法中，有哪些是对原数组有影响的？</h2><p>其实也就是会使原数组发生改变的方法，也称为<strong>变异方法</strong><br>常用的变异方法:push pop shift unshift<br>有几个不容易被想到: reverse sort splice<br>除了以上7种方法，其他的方法都对原数组没有影响，要么返回新数组，要么返回布尔类型或者数值等<br>
+        
       
 
       
-    </div>
+    </p></div>
     <div class="article-info article-info-index">
       
       
@@ -1168,15 +1055,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">跨域解决方案</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">GIT笔记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color2">跨域解决方案</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1184,11 +1067,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">hexo技巧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">数据结构算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">hexo技巧</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">

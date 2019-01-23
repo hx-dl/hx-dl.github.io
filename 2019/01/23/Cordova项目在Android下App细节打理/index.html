@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://hx-dl.github.io">
   <title>Cordova项目在Android下App细节打理 | 行无忌的成长小屋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="沉浸式状态栏为了实现沉浸式状态栏，在状态栏 StatusBar 插件 cordova-plugin-statusbar 2.4.2 &amp;quot;StatusBar&amp;quot;中做了些修改  目前蓝湖 app 采用沉浸式  状态栏方案，类似淘宝 app 的状态栏效果，任务栏半透明覆盖在 app 内容上  该插件本身不支持设置为沉浸式任务栏效果，所以对插件相关代码做了修改 将原来的 StatusB">
+  <meta name="description" content="沉浸式状态栏为了实现沉浸式状态栏，在状态栏 StatusBar 插件 cordova-plugin-statusbar 2.4.2 &amp;quot;StatusBar&amp;quot;中做了些修改  目前蓝湖 app 采用沉浸式  状态栏方案，类似淘宝 app 的状态栏效果，任务栏半透明覆盖在 app 内容上  该插件本身不支持设置为沉浸式任务栏效果，所以对插件相关代码做了修改">
 <meta name="keywords" content="Cordova">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cordova项目在Android下App细节打理">
 <meta property="og:url" content="https://hx-dl.github.io/2019/01/23/Cordova项目在Android下App细节打理/index.html">
 <meta property="og:site_name" content="行无忌的成长小屋">
-<meta property="og:description" content="沉浸式状态栏为了实现沉浸式状态栏，在状态栏 StatusBar 插件 cordova-plugin-statusbar 2.4.2 &amp;quot;StatusBar&amp;quot;中做了些修改  目前蓝湖 app 采用沉浸式  状态栏方案，类似淘宝 app 的状态栏效果，任务栏半透明覆盖在 app 内容上  该插件本身不支持设置为沉浸式任务栏效果，所以对插件相关代码做了修改 将原来的 StatusB">
+<meta property="og:description" content="沉浸式状态栏为了实现沉浸式状态栏，在状态栏 StatusBar 插件 cordova-plugin-statusbar 2.4.2 &amp;quot;StatusBar&amp;quot;中做了些修改  目前蓝湖 app 采用沉浸式  状态栏方案，类似淘宝 app 的状态栏效果，任务栏半透明覆盖在 app 内容上  该插件本身不支持设置为沉浸式任务栏效果，所以对插件相关代码做了修改">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-22T17:56:53.414Z">
+<meta property="og:updated_time" content="2019-01-23T02:21:09.875Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cordova项目在Android下App细节打理">
-<meta name="twitter:description" content="沉浸式状态栏为了实现沉浸式状态栏，在状态栏 StatusBar 插件 cordova-plugin-statusbar 2.4.2 &amp;quot;StatusBar&amp;quot;中做了些修改  目前蓝湖 app 采用沉浸式  状态栏方案，类似淘宝 app 的状态栏效果，任务栏半透明覆盖在 app 内容上  该插件本身不支持设置为沉浸式任务栏效果，所以对插件相关代码做了修改 将原来的 StatusB">
+<meta name="twitter:description" content="沉浸式状态栏为了实现沉浸式状态栏，在状态栏 StatusBar 插件 cordova-plugin-statusbar 2.4.2 &amp;quot;StatusBar&amp;quot;中做了些修改  目前蓝湖 app 采用沉浸式  状态栏方案，类似淘宝 app 的状态栏效果，任务栏半透明覆盖在 app 内容上  该插件本身不支持设置为沉浸式任务栏效果，所以对插件相关代码做了修改">
   
   
     <link rel="icon" href="/hx-dl.github.io/img/favicon.png">
@@ -180,8 +180,7 @@
 <ol>
 <li>目前蓝湖 app 采用沉浸式  状态栏方案，类似淘宝 app 的状态栏效果，任务栏半透明覆盖在 app 内容上</li>
 </ol>
-<p>该插件本身不支持设置为沉浸式任务栏效果，所以对插件相关代码做了修改</p>
-<p>将原来的 StatusBar.java 中的 run 方法</p>
+<p>该插件本身不支持设置为沉浸式任务栏效果，所以对插件相关代码做了修改<br><a id="more"></a><br>将原来的 StatusBar.java 中的 run 方法</p>
 <pre><code>public void run() {
     // Clear flag FLAG_FORCE_NOT_FULLSCREEN which is set initially
     // by the Cordova.
@@ -486,15 +485,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">跨域解决方案</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">GIT笔记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color2">跨域解决方案</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -502,11 +497,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">hexo技巧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">数据结构算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">hexo技巧</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">

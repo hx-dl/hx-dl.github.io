@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://hx-dl.github.io/2019/01/23/cordova-vue-项目做微信QQ分享遇到的坑/QQshare.png">
 <meta property="og:image" content="https://hx-dl.github.io/2019/01/23/cordova-vue-项目做微信QQ分享遇到的坑/QQplugin.png">
-<meta property="og:updated_time" content="2019-01-22T16:53:28.753Z">
+<meta property="og:updated_time" content="2019-01-23T02:22:11.724Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cordova+Vue 项目做微信QQ分享遇到的坑">
 <meta name="twitter:description" content="微信分享插件在app中有一个页面需要调用微信分享，纯web端微信分享的接口已经被封了，只能通过app原生去调用微信做分享了，于是就找了几款微信分享的插件，最终确定了使用 cordova-plugin-wechat 2.0.0 &amp;quot;Wechat 插件来完成将相应内容分享至朋友圈和联系人列表的功能 由于 Cordova 6.0 升级到 Cordova 7.0 后项目目录结构发生了变化，7.0">
@@ -180,8 +180,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="微信分享插件"><a href="#微信分享插件" class="headerlink" title="微信分享插件"></a>微信分享插件</h2><p>在app中有一个页面需要调用微信分享，纯web端微信分享的接口已经被封了，只能通过app原生去调用微信做分享了，于是就找了几款微信分享的插件，最终确定了使用 <code>cordova-plugin-wechat 2.0.0 &quot;Wechat</code> 插件来完成将相应内容分享至朋友圈和联系人列表的功能</p>
-<p>由于 Cordova 6.0 升级到 Cordova 7.0 后项目目录结构发生了变化，7.0 以后的 cordova 项目 andorid 平台下目录结构与标准 android 项目包目录结构保持一致，但是微信分享的插件使用的为 2.0 的版本，比较老旧，需要手动修改相关代码中的配置路径</p>
-<p>将 targetDir 变量的赋值方法 path.join()</p>
+<p>由于 Cordova 6.0 升级到 Cordova 7.0 后项目目录结构发生了变化，7.0 以后的 cordova 项目 andorid 平台下目录结构与标准 android 项目包目录结构保持一致，但是微信分享的插件使用的为 2.0 的版本，比较老旧，需要手动修改相关代码中的配置路径<br><a id="more"></a><br>将 targetDir 变量的赋值方法 path.join()</p>
 <pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var targetDir  = path.join(projectRoot, &quot;platforms&quot;, &quot;android&quot;, &quot;src&quot;, packageName.replace(/\./g, path.sep), &quot;wxapi&quot;);</span><br><span class="line">targetFiles = [&quot;EntryActivity.java&quot;, &quot;WXEntryActivity.java&quot;, &quot;WXPayEntryActivity.java&quot;];</span><br></pre></td></tr></table></figure>
 </code></pre><p>改为</p>
 <pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var targetDir  = path.join(projectRoot, &quot;platforms&quot;, &quot;android&quot;, &quot;app&quot;,&quot;src&quot;,&quot;main&quot;,&quot;java&quot;, packageName.replace(/\./g, path.sep), &quot;wxapi&quot;);</span><br><span class="line">targetFiles = [&quot;EntryActivity.java&quot;, &quot;WXEntryActivity.java&quot;, &quot;WXPayEntryActivity.java&quot;];</span><br></pre></td></tr></table></figure>
@@ -453,15 +452,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">跨域解决方案</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">GIT笔记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color2">跨域解决方案</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -469,11 +464,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">hexo技巧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">数据结构算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">hexo技巧</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://hx-dl.github.io">
   <title>数组与常用方法 | 行无忌的成长小屋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="数组都有哪些方法？数组的方法非常多, 可以前往MDN查看具体内容  MDN引路大法Array 数组的方法中，有哪些是对原数组有影响的？其实也就是会使原数组发生改变的方法，也称为变异方法常用的变异方法:push pop shift unshift有几个不容易被想到: reverse sort splice除了以上7种方法，其他的方法都对原数组没有影响，要么返回新数组，要么返回布尔类型或者数值等 如何">
+  <meta name="description" content="数组都有哪些方法？数组的方法非常多, 可以前往MDN查看具体内容  MDN引路大法Array 数组的方法中，有哪些是对原数组有影响的？其实也就是会使原数组发生改变的方法，也称为变异方法常用的变异方法:push pop shift unshift有几个不容易被想到: reverse sort splice除了以上7种方法，其他的方法都对原数组没有影响，要么返回新数组，要么返回布尔类型或者数值等">
 <meta name="keywords" content="JavaScript基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数组与常用方法">
 <meta property="og:url" content="https://hx-dl.github.io/2018/07/24/数组与常用方法/index.html">
 <meta property="og:site_name" content="行无忌的成长小屋">
-<meta property="og:description" content="数组都有哪些方法？数组的方法非常多, 可以前往MDN查看具体内容  MDN引路大法Array 数组的方法中，有哪些是对原数组有影响的？其实也就是会使原数组发生改变的方法，也称为变异方法常用的变异方法:push pop shift unshift有几个不容易被想到: reverse sort splice除了以上7种方法，其他的方法都对原数组没有影响，要么返回新数组，要么返回布尔类型或者数值等 如何">
+<meta property="og:description" content="数组都有哪些方法？数组的方法非常多, 可以前往MDN查看具体内容  MDN引路大法Array 数组的方法中，有哪些是对原数组有影响的？其实也就是会使原数组发生改变的方法，也称为变异方法常用的变异方法:push pop shift unshift有几个不容易被想到: reverse sort splice除了以上7种方法，其他的方法都对原数组没有影响，要么返回新数组，要么返回布尔类型或者数值等">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-22T16:24:40.579Z">
+<meta property="og:updated_time" content="2019-01-23T02:21:38.288Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数组与常用方法">
-<meta name="twitter:description" content="数组都有哪些方法？数组的方法非常多, 可以前往MDN查看具体内容  MDN引路大法Array 数组的方法中，有哪些是对原数组有影响的？其实也就是会使原数组发生改变的方法，也称为变异方法常用的变异方法:push pop shift unshift有几个不容易被想到: reverse sort splice除了以上7种方法，其他的方法都对原数组没有影响，要么返回新数组，要么返回布尔类型或者数值等 如何">
+<meta name="twitter:description" content="数组都有哪些方法？数组的方法非常多, 可以前往MDN查看具体内容  MDN引路大法Array 数组的方法中，有哪些是对原数组有影响的？其实也就是会使原数组发生改变的方法，也称为变异方法常用的变异方法:push pop shift unshift有几个不容易被想到: reverse sort splice除了以上7种方法，其他的方法都对原数组没有影响，要么返回新数组，要么返回布尔类型或者数值等">
   
   
     <link rel="icon" href="/hx-dl.github.io/img/favicon.png">
@@ -177,7 +177,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="数组都有哪些方法？"><a href="#数组都有哪些方法？" class="headerlink" title="数组都有哪些方法？"></a>数组都有哪些方法？</h2><p>数组的方法非常多, 可以前往MDN查看具体内容  <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank" rel="noopener">MDN引路大法Array</a></p>
-<h2 id="数组的方法中，有哪些是对原数组有影响的？"><a href="#数组的方法中，有哪些是对原数组有影响的？" class="headerlink" title="数组的方法中，有哪些是对原数组有影响的？"></a>数组的方法中，有哪些是对原数组有影响的？</h2><p>其实也就是会使原数组发生改变的方法，也称为<strong>变异方法</strong><br>常用的变异方法:push pop shift unshift<br>有几个不容易被想到: reverse sort splice<br>除了以上7种方法，其他的方法都对原数组没有影响，要么返回新数组，要么返回布尔类型或者数值等</p>
+<h2 id="数组的方法中，有哪些是对原数组有影响的？"><a href="#数组的方法中，有哪些是对原数组有影响的？" class="headerlink" title="数组的方法中，有哪些是对原数组有影响的？"></a>数组的方法中，有哪些是对原数组有影响的？</h2><p>其实也就是会使原数组发生改变的方法，也称为<strong>变异方法</strong><br>常用的变异方法:push pop shift unshift<br>有几个不容易被想到: reverse sort splice<br>除了以上7种方法，其他的方法都对原数组没有影响，要么返回新数组，要么返回布尔类型或者数值等<br><a id="more"></a></p>
 <h2 id="如何将字符串转换为数组，数组转为字符串？"><a href="#如何将字符串转换为数组，数组转为字符串？" class="headerlink" title="如何将字符串转换为数组，数组转为字符串？"></a>如何将字符串转换为数组，数组转为字符串？</h2><p>字符串转数组：str.split(separator,limit);  参数1指定字符串或正则，参照2指定数组的最大长度</p>
 <pre><code>var str = &apos;array&apos;
 var arr = str.split(&apos;&apos;)
@@ -482,15 +482,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">跨域解决方案</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">GIT笔记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color2">跨域解决方案</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -498,11 +494,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">hexo技巧</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">数据结构算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">hexo技巧</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
